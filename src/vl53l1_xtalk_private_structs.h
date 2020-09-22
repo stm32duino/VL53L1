@@ -39,24 +39,24 @@ typedef struct {
 
 
 
-	uint32_t VL53L1_p_062[VL53L1_D_012];
+  uint32_t VL53L1_p_062[VL53L1_D_012];
 
 
-	int16_t  VL53L1_p_060;
+  int16_t  VL53L1_p_060;
 
-	int16_t  VL53L1_p_061;
-
-
-	VL53L1_histogram_bin_data_t VL53L1_p_057;
-
-	VL53L1_histogram_bin_data_t VL53L1_p_058;
+  int16_t  VL53L1_p_061;
 
 
+  VL53L1_histogram_bin_data_t VL53L1_p_057;
 
-	uint32_t VL53L1_p_059;
+  VL53L1_histogram_bin_data_t VL53L1_p_058;
 
 
-	uint32_t VL53L1_p_063[VL53L1_XTALK_HISTO_BINS];
+
+  uint32_t VL53L1_p_059;
+
+
+  uint32_t VL53L1_p_063[VL53L1_XTALK_HISTO_BINS];
 
 
 } VL53L1_xtalk_algo_data_t;

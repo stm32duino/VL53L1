@@ -46,9 +46,8 @@
 /* Classes  ------------------------------------------------------------------*/
 /** An abstract class for range sensors
  */
-class RangeSensor : public ComponentObject
-{
- public:
+class RangeSensor : public ComponentObject {
+  public:
     /**
      * @brief       Get current range [mm]
      * @param[out]  piData Pointer to where to store range to

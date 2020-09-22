@@ -130,7 +130,7 @@
 #define VL53L1_CLEAR_ERROR_INT                          0x02
 
 
-#define VL53L1_SEQUENCE_VHV_EN						    0x01
+#define VL53L1_SEQUENCE_VHV_EN                0x01
 #define VL53L1_SEQUENCE_PHASECAL_EN                     0x02
 #define VL53L1_SEQUENCE_REFERENCE_PHASE_EN              0x04
 #define VL53L1_SEQUENCE_DSS1_EN                         0x08

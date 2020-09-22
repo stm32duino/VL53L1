@@ -52,9 +52,8 @@
 
 /** An abstract class for Generic components.
  */
-class ComponentObject
-{
-public:
+class ComponentObject {
+  public:
     /**
      * @brief     Initializing the component.
      * @param[in] init pointer to device specific initalization structure.
