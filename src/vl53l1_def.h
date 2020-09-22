@@ -392,13 +392,13 @@ typedef uint8_t VL53L1_State;
 typedef uint8_t VL53L1_SmudgeCorrectionModes;
 
 #define VL53L1_SMUDGE_CORRECTION_NONE       ((VL53L1_SmudgeCorrectionModes)  0)
-/*!< Smudge correction is applied continously accross the rangings */
+/*!< Smudge correction is applied continuously across the rangings */
 #define VL53L1_SMUDGE_CORRECTION_CONTINUOUS ((VL53L1_SmudgeCorrectionModes)  1)
-/*!< Smudge correction is applied continously accross the rangings */
+/*!< Smudge correction is applied continuously across the rangings */
 #define VL53L1_SMUDGE_CORRECTION_SINGLE     ((VL53L1_SmudgeCorrectionModes)  2)
-/*!< Smudge correction is applied only once accross the rangings */
+/*!< Smudge correction is applied only once across the rangings */
 #define VL53L1_SMUDGE_CORRECTION_DEBUG      ((VL53L1_SmudgeCorrectionModes)  3)
-/*!< Smudge detection is applied continously but Xtalk values are not
+/*!< Smudge detection is applied continuously but Xtalk values are not
  * updated automatically within the driver
  */
 
