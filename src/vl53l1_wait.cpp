@@ -71,435 +71,440 @@
 
 
 VL53L1_Error VL53L1::VL53L1_wait_for_boot_completion(
-	VL53L1_DEV     Dev)
+  VL53L1_DEV     Dev)
 {
 
 
 
-	VL53L1_Error status = VL53L1_ERROR_NONE;
-	VL53L1_LLDriverData_t *pdev = VL53L1DevStructGetLLDriverHandle(Dev);
+  VL53L1_Error status = VL53L1_ERROR_NONE;
+  VL53L1_LLDriverData_t *pdev = VL53L1DevStructGetLLDriverHandle(Dev);
 
-	uint8_t      fw_ready  = 0;
-
-	
-
-	if (pdev->wait_method == VL53L1_WAIT_METHOD_BLOCKING) {
+  uint8_t      fw_ready  = 0;
 
 
 
-		status =
-			VL53L1_poll_for_boot_completion(
-				Dev,
-				VL53L1_BOOT_COMPLETION_POLLING_TIMEOUT_MS);
-
-	} else {
+  if (pdev->wait_method == VL53L1_WAIT_METHOD_BLOCKING) {
 
 
 
-		fw_ready = 0;
-		while (fw_ready == 0x00 && status == VL53L1_ERROR_NONE) {
-			status = VL53L1_is_boot_complete(
-				Dev,
-				&fw_ready);
+    status =
+      VL53L1_poll_for_boot_completion(
+        Dev,
+        VL53L1_BOOT_COMPLETION_POLLING_TIMEOUT_MS);
 
-			if (status == VL53L1_ERROR_NONE) {
-				status = VL53L1_WaitMs(
-					Dev,
-					VL53L1_POLLING_DELAY_MS);
-			}
-		}
-	}
+  } else {
 
-	
 
-	return status;
+
+    fw_ready = 0;
+    while (fw_ready == 0x00 && status == VL53L1_ERROR_NONE) {
+      status = VL53L1_is_boot_complete(
+                 Dev,
+                 &fw_ready);
+
+      if (status == VL53L1_ERROR_NONE) {
+        status = VL53L1_WaitMs(
+                   Dev,
+                   VL53L1_POLLING_DELAY_MS);
+      }
+    }
+  }
+
+
+
+  return status;
 
 }
 
 
 VL53L1_Error VL53L1::VL53L1_wait_for_firmware_ready(
-	VL53L1_DEV     Dev)
+  VL53L1_DEV     Dev)
 {
 
 
 
-	VL53L1_Error status = VL53L1_ERROR_NONE;
-	VL53L1_LLDriverData_t *pdev = VL53L1DevStructGetLLDriverHandle(Dev);
+  VL53L1_Error status = VL53L1_ERROR_NONE;
+  VL53L1_LLDriverData_t *pdev = VL53L1DevStructGetLLDriverHandle(Dev);
 
-	uint8_t      fw_ready  = 0;
-	uint8_t      mode_start  = 0;
-
-	
-
-
-	mode_start =
-		pdev->sys_ctrl.system__mode_start &
-		VL53L1_DEVICEMEASUREMENTMODE_MODE_MASK;
+  uint8_t      fw_ready  = 0;
+  uint8_t      mode_start  = 0;
 
 
 
-	if ((mode_start == VL53L1_DEVICEMEASUREMENTMODE_TIMED) ||
-		(mode_start == VL53L1_DEVICEMEASUREMENTMODE_SINGLESHOT)) {
 
-		if (pdev->wait_method == VL53L1_WAIT_METHOD_BLOCKING) {
-
-
-
-			status =
-			VL53L1_poll_for_firmware_ready(
-				Dev,
-				VL53L1_RANGE_COMPLETION_POLLING_TIMEOUT_MS);
-
-		} else {
+  mode_start =
+    pdev->sys_ctrl.system__mode_start &
+    VL53L1_DEVICEMEASUREMENTMODE_MODE_MASK;
 
 
 
-			fw_ready = 0;
-			while (fw_ready == 0x00 && status ==
-					VL53L1_ERROR_NONE) {
-				status = VL53L1_is_firmware_ready(
-					Dev,
-					&fw_ready);
+  if ((mode_start == VL53L1_DEVICEMEASUREMENTMODE_TIMED) ||
+      (mode_start == VL53L1_DEVICEMEASUREMENTMODE_SINGLESHOT)) {
 
-				if (status == VL53L1_ERROR_NONE) {
-					status = VL53L1_WaitMs(
-						Dev,
-						VL53L1_POLLING_DELAY_MS);
-				}
-			}
-		}
-	}
+    if (pdev->wait_method == VL53L1_WAIT_METHOD_BLOCKING) {
 
-	
 
-	return status;
+
+      status =
+        VL53L1_poll_for_firmware_ready(
+          Dev,
+          VL53L1_RANGE_COMPLETION_POLLING_TIMEOUT_MS);
+
+    } else {
+
+
+
+      fw_ready = 0;
+      while (fw_ready == 0x00 && status ==
+             VL53L1_ERROR_NONE) {
+        status = VL53L1_is_firmware_ready(
+                   Dev,
+                   &fw_ready);
+
+        if (status == VL53L1_ERROR_NONE) {
+          status = VL53L1_WaitMs(
+                     Dev,
+                     VL53L1_POLLING_DELAY_MS);
+        }
+      }
+    }
+  }
+
+
+
+  return status;
 }
 
 
 VL53L1_Error VL53L1::VL53L1_wait_for_range_completion(
-	VL53L1_DEV     Dev)
+  VL53L1_DEV     Dev)
 {
 
 
 
-	VL53L1_Error status = VL53L1_ERROR_NONE;
-	VL53L1_LLDriverData_t *pdev = VL53L1DevStructGetLLDriverHandle(Dev);
+  VL53L1_Error status = VL53L1_ERROR_NONE;
+  VL53L1_LLDriverData_t *pdev = VL53L1DevStructGetLLDriverHandle(Dev);
 
-	uint8_t      data_ready  = 0;
-
-	
-
-	if (pdev->wait_method == VL53L1_WAIT_METHOD_BLOCKING) {
+  uint8_t      data_ready  = 0;
 
 
 
-		status =
-			VL53L1_poll_for_range_completion(
-				Dev,
-				VL53L1_RANGE_COMPLETION_POLLING_TIMEOUT_MS);
-
-	} else {
+  if (pdev->wait_method == VL53L1_WAIT_METHOD_BLOCKING) {
 
 
 
-		data_ready = 0;
-		while (data_ready == 0x00 && status == VL53L1_ERROR_NONE) {
-			status = VL53L1_is_new_data_ready(
-				Dev,
-				&data_ready);
+    status =
+      VL53L1_poll_for_range_completion(
+        Dev,
+        VL53L1_RANGE_COMPLETION_POLLING_TIMEOUT_MS);
 
-			if (status == VL53L1_ERROR_NONE) {
-				status = VL53L1_WaitMs(
-					Dev,
-					VL53L1_POLLING_DELAY_MS);
-			}
-		}
-	}
+  } else {
 
-	
 
-	return status;
+
+    data_ready = 0;
+    while (data_ready == 0x00 && status == VL53L1_ERROR_NONE) {
+      status = VL53L1_is_new_data_ready(
+                 Dev,
+                 &data_ready);
+
+      if (status == VL53L1_ERROR_NONE) {
+        status = VL53L1_WaitMs(
+                   Dev,
+                   VL53L1_POLLING_DELAY_MS);
+      }
+    }
+  }
+
+
+
+  return status;
 }
 
 
 VL53L1_Error VL53L1::VL53L1_wait_for_test_completion(
-	VL53L1_DEV     Dev)
+  VL53L1_DEV     Dev)
 {
 
 
 
-	VL53L1_Error status = VL53L1_ERROR_NONE;
-	VL53L1_LLDriverData_t *pdev = VL53L1DevStructGetLLDriverHandle(Dev);
+  VL53L1_Error status = VL53L1_ERROR_NONE;
+  VL53L1_LLDriverData_t *pdev = VL53L1DevStructGetLLDriverHandle(Dev);
 
-	uint8_t      data_ready  = 0;
-
-	
-
-	if (pdev->wait_method == VL53L1_WAIT_METHOD_BLOCKING) {
+  uint8_t      data_ready  = 0;
 
 
 
-		status =
-			VL53L1_poll_for_range_completion(
-				Dev,
-				VL53L1_TEST_COMPLETION_POLLING_TIMEOUT_MS);
-
-	} else {
+  if (pdev->wait_method == VL53L1_WAIT_METHOD_BLOCKING) {
 
 
 
-		data_ready = 0;
-		while (data_ready == 0x00 && status == VL53L1_ERROR_NONE) {
-			status = VL53L1_is_new_data_ready(
-				Dev,
-				&data_ready);
+    status =
+      VL53L1_poll_for_range_completion(
+        Dev,
+        VL53L1_TEST_COMPLETION_POLLING_TIMEOUT_MS);
 
-			if (status == VL53L1_ERROR_NONE) {
-				status = VL53L1_WaitMs(
-					Dev,
-					VL53L1_POLLING_DELAY_MS);
-			}
-		}
-	}
+  } else {
 
-	
 
-	return status;
+
+    data_ready = 0;
+    while (data_ready == 0x00 && status == VL53L1_ERROR_NONE) {
+      status = VL53L1_is_new_data_ready(
+                 Dev,
+                 &data_ready);
+
+      if (status == VL53L1_ERROR_NONE) {
+        status = VL53L1_WaitMs(
+                   Dev,
+                   VL53L1_POLLING_DELAY_MS);
+      }
+    }
+  }
+
+
+
+  return status;
 }
 
 
 
 
 VL53L1_Error VL53L1::VL53L1_is_boot_complete(
-	VL53L1_DEV     Dev,
-	uint8_t       *pready)
+  VL53L1_DEV     Dev,
+  uint8_t       *pready)
 {
 
 
-	VL53L1_Error status = VL53L1_ERROR_NONE;
-	uint8_t  firmware__system_status = 0;
-
-	
+  VL53L1_Error status = VL53L1_ERROR_NONE;
+  uint8_t  firmware__system_status = 0;
 
 
 
-	status =
-		VL53L1_RdByte(
-			Dev,
-			VL53L1_FIRMWARE__SYSTEM_STATUS,
-			&firmware__system_status);
+
+
+  status =
+    VL53L1_RdByte(
+      Dev,
+      VL53L1_FIRMWARE__SYSTEM_STATUS,
+      &firmware__system_status);
 
 
 
-	if ((firmware__system_status & 0x01) == 0x01) {
-		*pready = 0x01;
-		VL53L1_init_ll_driver_state(
-			Dev,
-			VL53L1_DEVICESTATE_SW_STANDBY);
-	} else {
-		*pready = 0x00;
-		VL53L1_init_ll_driver_state(
-			Dev,
-			VL53L1_DEVICESTATE_FW_COLDBOOT);
-	}
+  if ((firmware__system_status & 0x01) == 0x01) {
+    *pready = 0x01;
+    VL53L1_init_ll_driver_state(
+      Dev,
+      VL53L1_DEVICESTATE_SW_STANDBY);
+  } else {
+    *pready = 0x00;
+    VL53L1_init_ll_driver_state(
+      Dev,
+      VL53L1_DEVICESTATE_FW_COLDBOOT);
+  }
 
-	
 
-	return status;
+
+  return status;
 }
 
 
 VL53L1_Error VL53L1::VL53L1_is_firmware_ready(
-	VL53L1_DEV     Dev,
-	uint8_t       *pready)
+  VL53L1_DEV     Dev,
+  uint8_t       *pready)
 {
 
 
-	VL53L1_Error status = VL53L1_ERROR_NONE;
-	VL53L1_LLDriverData_t *pdev = VL53L1DevStructGetLLDriverHandle(Dev);
+  VL53L1_Error status = VL53L1_ERROR_NONE;
+  VL53L1_LLDriverData_t *pdev = VL53L1DevStructGetLLDriverHandle(Dev);
 
-	
 
-	status = VL53L1_is_firmware_ready_silicon(
-				Dev,
-				pready);
 
-	pdev->fw_ready = *pready;
+  status = VL53L1_is_firmware_ready_silicon(
+             Dev,
+             pready);
 
-	
+  pdev->fw_ready = *pready;
 
-	return status;
+
+
+  return status;
 }
 
 
 VL53L1_Error VL53L1::VL53L1_is_new_data_ready(
-	VL53L1_DEV     Dev,
-	uint8_t       *pready)
+  VL53L1_DEV     Dev,
+  uint8_t       *pready)
 {
 
 
-	VL53L1_Error status = VL53L1_ERROR_NONE;
-	VL53L1_LLDriverData_t *pdev = VL53L1DevStructGetLLDriverHandle(Dev);
+  VL53L1_Error status = VL53L1_ERROR_NONE;
+  VL53L1_LLDriverData_t *pdev = VL53L1DevStructGetLLDriverHandle(Dev);
 
-	uint8_t  gpio__mux_active_high_hv = 0;
-	uint8_t  gpio__tio_hv_status      = 0;
-	uint8_t  interrupt_ready          = 0;
-
-	
-
-	gpio__mux_active_high_hv =
-			pdev->stat_cfg.gpio_hv_mux__ctrl &
-			VL53L1_DEVICEINTERRUPTLEVEL_ACTIVE_MASK;
-
-	if (gpio__mux_active_high_hv == VL53L1_DEVICEINTERRUPTLEVEL_ACTIVE_HIGH)
-		interrupt_ready = 0x01;
-	else
-		interrupt_ready = 0x00;
+  uint8_t  gpio__mux_active_high_hv = 0;
+  uint8_t  gpio__tio_hv_status      = 0;
+  uint8_t  interrupt_ready          = 0;
 
 
 
-	status = VL53L1_RdByte(
-					Dev,
-					VL53L1_GPIO__TIO_HV_STATUS,
-					&gpio__tio_hv_status);
+  gpio__mux_active_high_hv =
+    pdev->stat_cfg.gpio_hv_mux__ctrl &
+    VL53L1_DEVICEINTERRUPTLEVEL_ACTIVE_MASK;
+
+  if (gpio__mux_active_high_hv == VL53L1_DEVICEINTERRUPTLEVEL_ACTIVE_HIGH) {
+    interrupt_ready = 0x01;
+  } else {
+    interrupt_ready = 0x00;
+  }
 
 
 
-	if ((gpio__tio_hv_status & 0x01) == interrupt_ready)
-		*pready = 0x01;
-	else
-		*pready = 0x00;
+  status = VL53L1_RdByte(
+             Dev,
+             VL53L1_GPIO__TIO_HV_STATUS,
+             &gpio__tio_hv_status);
 
-	
 
-	return status;
+
+  if ((gpio__tio_hv_status & 0x01) == interrupt_ready) {
+    *pready = 0x01;
+  } else {
+    *pready = 0x00;
+  }
+
+
+
+  return status;
 }
 
 
 
 
 VL53L1_Error VL53L1::VL53L1_poll_for_boot_completion(
-	VL53L1_DEV    Dev,
-	uint32_t      timeout_ms)
+  VL53L1_DEV    Dev,
+  uint32_t      timeout_ms)
 {
 
 
-	VL53L1_Error status       = VL53L1_ERROR_NONE;
-
-	
+  VL53L1_Error status       = VL53L1_ERROR_NONE;
 
 
 
-	status = VL53L1_WaitUs(
-			Dev,
-			VL53L1_FIRMWARE_BOOT_TIME_US);
 
-	if (status == VL53L1_ERROR_NONE)
-		status =
-			VL53L1_WaitValueMaskEx(
-				Dev,
-				timeout_ms,
-				VL53L1_FIRMWARE__SYSTEM_STATUS,
-				0x01,
-				0x01,
-				VL53L1_POLLING_DELAY_MS);
 
-	if (status == VL53L1_ERROR_NONE)
-		VL53L1_init_ll_driver_state(Dev, VL53L1_DEVICESTATE_SW_STANDBY);
+  status = VL53L1_WaitUs(
+             Dev,
+             VL53L1_FIRMWARE_BOOT_TIME_US);
 
-	
+  if (status == VL53L1_ERROR_NONE)
+    status =
+      VL53L1_WaitValueMaskEx(
+        Dev,
+        timeout_ms,
+        VL53L1_FIRMWARE__SYSTEM_STATUS,
+        0x01,
+        0x01,
+        VL53L1_POLLING_DELAY_MS);
 
-	return status;
+  if (status == VL53L1_ERROR_NONE) {
+    VL53L1_init_ll_driver_state(Dev, VL53L1_DEVICESTATE_SW_STANDBY);
+  }
+
+
+
+  return status;
 }
 
 
 VL53L1_Error VL53L1::VL53L1_poll_for_firmware_ready(
-	VL53L1_DEV    Dev,
-	uint32_t      timeout_ms)
+  VL53L1_DEV    Dev,
+  uint32_t      timeout_ms)
 {
 
 
-	VL53L1_Error status          = VL53L1_ERROR_NONE;
-	VL53L1_LLDriverData_t *pdev = VL53L1DevStructGetLLDriverHandle(Dev);
+  VL53L1_Error status          = VL53L1_ERROR_NONE;
+  VL53L1_LLDriverData_t *pdev = VL53L1DevStructGetLLDriverHandle(Dev);
 
-	uint32_t     start_time_ms   = 0;
-	uint32_t     current_time_ms = 0;
-	int32_t      poll_delay_ms   = VL53L1_POLLING_DELAY_MS;
-	uint8_t      fw_ready        = 0;
-
-
-
-	VL53L1_GetTickCount(&start_time_ms);
-	pdev->fw_ready_poll_duration_ms = 0;
+  uint32_t     start_time_ms   = 0;
+  uint32_t     current_time_ms = 0;
+  int32_t      poll_delay_ms   = VL53L1_POLLING_DELAY_MS;
+  uint8_t      fw_ready        = 0;
 
 
 
-	while ((status == VL53L1_ERROR_NONE) &&
-		   (pdev->fw_ready_poll_duration_ms < timeout_ms) &&
-		   (fw_ready == 0)) {
-
-		status = VL53L1_is_firmware_ready(
-			Dev,
-			&fw_ready);
-
-		if (status == VL53L1_ERROR_NONE &&
-			fw_ready == 0 &&
-			poll_delay_ms > 0) {
-			status = VL53L1_WaitMs(
-				Dev,
-				poll_delay_ms);
-		}
+  VL53L1_GetTickCount(&start_time_ms);
+  pdev->fw_ready_poll_duration_ms = 0;
 
 
-		VL53L1_GetTickCount(&current_time_ms);
-		pdev->fw_ready_poll_duration_ms =
-				current_time_ms - start_time_ms;
-	}
 
-	if (fw_ready == 0 && status == VL53L1_ERROR_NONE)
-		status = VL53L1_ERROR_TIME_OUT;
+  while ((status == VL53L1_ERROR_NONE) &&
+         (pdev->fw_ready_poll_duration_ms < timeout_ms) &&
+         (fw_ready == 0)) {
 
-	
+    status = VL53L1_is_firmware_ready(
+               Dev,
+               &fw_ready);
 
-	return status;
+    if (status == VL53L1_ERROR_NONE &&
+        fw_ready == 0 &&
+        poll_delay_ms > 0) {
+      status = VL53L1_WaitMs(
+                 Dev,
+                 poll_delay_ms);
+    }
+
+
+    VL53L1_GetTickCount(&current_time_ms);
+    pdev->fw_ready_poll_duration_ms =
+      current_time_ms - start_time_ms;
+  }
+
+  if (fw_ready == 0 && status == VL53L1_ERROR_NONE) {
+    status = VL53L1_ERROR_TIME_OUT;
+  }
+
+
+
+  return status;
 }
 
 
 VL53L1_Error VL53L1::VL53L1_poll_for_range_completion(
-	VL53L1_DEV     Dev,
-	uint32_t       timeout_ms)
+  VL53L1_DEV     Dev,
+  uint32_t       timeout_ms)
 {
 
 
-	VL53L1_Error status = VL53L1_ERROR_NONE;
-	VL53L1_LLDriverData_t *pdev = VL53L1DevStructGetLLDriverHandle(Dev);
+  VL53L1_Error status = VL53L1_ERROR_NONE;
+  VL53L1_LLDriverData_t *pdev = VL53L1DevStructGetLLDriverHandle(Dev);
 
-	uint8_t  gpio__mux_active_high_hv = 0;
-	uint8_t  interrupt_ready          = 0;
+  uint8_t  gpio__mux_active_high_hv = 0;
+  uint8_t  interrupt_ready          = 0;
 
-	
 
-	gpio__mux_active_high_hv =
-			pdev->stat_cfg.gpio_hv_mux__ctrl &
-			VL53L1_DEVICEINTERRUPTLEVEL_ACTIVE_MASK;
 
-	if (gpio__mux_active_high_hv == VL53L1_DEVICEINTERRUPTLEVEL_ACTIVE_HIGH)
-		interrupt_ready = 0x01;
-	else
-		interrupt_ready = 0x00;
+  gpio__mux_active_high_hv =
+    pdev->stat_cfg.gpio_hv_mux__ctrl &
+    VL53L1_DEVICEINTERRUPTLEVEL_ACTIVE_MASK;
 
-	status =
-		VL53L1_WaitValueMaskEx(
-			Dev,
-			timeout_ms,
-			VL53L1_GPIO__TIO_HV_STATUS,
-			interrupt_ready,
-			0x01,
-			VL53L1_POLLING_DELAY_MS);
+  if (gpio__mux_active_high_hv == VL53L1_DEVICEINTERRUPTLEVEL_ACTIVE_HIGH) {
+    interrupt_ready = 0x01;
+  } else {
+    interrupt_ready = 0x00;
+  }
 
-	
+  status =
+    VL53L1_WaitValueMaskEx(
+      Dev,
+      timeout_ms,
+      VL53L1_GPIO__TIO_HV_STATUS,
+      interrupt_ready,
+      0x01,
+      VL53L1_POLLING_DELAY_MS);
 
-	return status;
+
+
+  return status;
 }
 
 

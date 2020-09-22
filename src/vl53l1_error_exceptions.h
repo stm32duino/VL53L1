@@ -83,7 +83,7 @@
 #define IGNORE_OFFSET_CAL_MISSING_SAMPLES                      0
 #define IGNORE_OFFSET_CAL_SIGMA_TOO_HIGH                       0
 #define IGNORE_OFFSET_CAL_RATE_TOO_HIGH                        0
-#define IGNORE_OFFSET_CAL_SPAD_COUNT_TOO_LOW				   0
+#define IGNORE_OFFSET_CAL_SPAD_COUNT_TOO_LOW           0
 
 #define IGNORE_ZONE_CAL_MISSING_SAMPLES                        0
 #define IGNORE_ZONE_CAL_SIGMA_TOO_HIGH                         0
