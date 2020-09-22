@@ -42,7 +42,16 @@
 //On some boards like the Arduino Uno the pin used by the sensor to raise interrupts (A2)
 //can't be mapped as an interrupt pin. For this this reason this sketch will not work
 //unless some additional cabling is done and the interrupt pin is changed.
-
+/*
+ * To use this sketch you need to connect the VL53L1 satellite sensor directly to the Nucleo board with wires in this way:
+ * pin 1 (Interrupt) of the VL53L1 satellite connected to pin A2 of the Nucleo board 
+ * pin 2 (SCL_I) of the VL53L1 satellite connected to pin D15 (SCL) of the Nucleo board with a Pull-Up resistor of 4.7 KOhm
+ * pin 3 (XSDN_I) of the VL53L1 satellite connected to pin A1 of the Nucleo board
+ * pin 4 (SDA_I) of the VL53L1 satellite connected to pin D14 (SDA) of the Nucleo board with a Pull-Up resistor of 4.7 KOhm
+ * pin 5 (VDD) of the VL53L1 satellite connected to 3V3 pin of the Nucleo board
+ * pin 6 (GND) of the VL53L1 satellite connected to GND of the Nucleo board
+ * pins 7, 8, 9 and 10 are not connected.
+ */
 /* Includes ------------------------------------------------------------------*/
 #include <Arduino.h>
 #include <Wire.h>
