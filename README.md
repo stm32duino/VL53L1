@@ -1,13 +1,10 @@
 # VL53L1
 Arduino library to support the VL53L1 Time-of-Flight ranging sensor with advanced multi-zone and multi-object detection.
-This sensor uses I2C to communicate. An I2C instance is required to access to the sensor.
-The APIs provide simple distance measure and multi-object detection in both polling and interrupt modes.
 
 ## API
 
 This sensor uses I2C to communicate. And I2C instance is required to access to the sensor.
-
-The API provides simple distance measure and multi-object detection.
+The APIs provide simple distance measure and multi-object detection in both polling and interrupt modes.
 
 ## Examples
 
