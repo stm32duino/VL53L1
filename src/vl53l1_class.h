@@ -285,20 +285,18 @@ class VL53L1 : public RangeSensor {
 
     virtual int begin()
     {
-       if(gpio0 >= 0)
-       {
-          pinMode(gpio0, OUTPUT);
-       }
-       return 0;
+      if (gpio0 >= 0) {
+        pinMode(gpio0, OUTPUT);
+      }
+      return 0;
     }
 
     virtual int end()
     {
-       if(gpio0 >= 0)
-       {
-          pinMode(gpio0, INPUT);
-       }
-       return 0;
+      if (gpio0 >= 0) {
+        pinMode(gpio0, INPUT);
+      }
+      return 0;
     }
 
     /*** Interface Methods ***/
