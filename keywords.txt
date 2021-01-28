@@ -14,6 +14,8 @@ VL53L1	KEYWORD1
 # Methods and Functions (KEYWORD2)
 #######################################
 
+begin	KEYWORD2
+end	KEYWORD2
 VL53L1_On	KEYWORD2
 VL53L1_Off	KEYWORD2
 InitSensor	KEYWORD2
