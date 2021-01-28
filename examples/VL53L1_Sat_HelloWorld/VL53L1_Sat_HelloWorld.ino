@@ -67,7 +67,7 @@
 #define LedPin LED_BUILTIN
 
 // Components.
-VL53L1 *sensor_vl53l1_sat;
+VL53L1 sensor_vl53l1_sat(&DEV_I2C, A1);
 
 /* Setup ---------------------------------------------------------------------*/
 
@@ -83,18 +83,18 @@ void setup()
    // Initialize I2C bus.
    DEV_I2C.begin();
 
-   // Create VL53L1 satellite component.
-   sensor_vl53l1_sat = new VL53L1(&DEV_I2C, A1, A2);
+   // Configure VL53L1 satellite component.
+   sensor_vl53l1_sat.begin();
 
    // Switch off VL53L1 satellite component.
-   sensor_vl53l1_sat->VL53L1_Off();
+   sensor_vl53l1_sat.VL53L1_Off();
 
    //Initialize VL53L1 satellite component.
-   sensor_vl53l1_sat->InitSensor(0x12);
+   sensor_vl53l1_sat.InitSensor(0x12);
 
    // Start Measurements
-   sensor_vl53l1_sat->VL53L1_SetPresetMode(VL53L1_PRESETMODE_RANGING);
-   sensor_vl53l1_sat->VL53L1_StartMeasurement();
+   sensor_vl53l1_sat.VL53L1_SetPresetMode(VL53L1_PRESETMODE_RANGING);
+   sensor_vl53l1_sat.VL53L1_StartMeasurement();
 }
 
 void loop()
@@ -108,7 +108,7 @@ void loop()
 
    do
    {
-      status = sensor_vl53l1_sat->VL53L1_GetMeasurementDataReady(&NewDataReady);
+      status = sensor_vl53l1_sat.VL53L1_GetMeasurementDataReady(&NewDataReady);
    } while (!NewDataReady);
 
    //Led on
@@ -116,7 +116,7 @@ void loop()
 
    if((!status)&&(NewDataReady!=0))
    {
-      status = sensor_vl53l1_sat->VL53L1_GetMultiRangingData(pMultiRangingData);
+      status = sensor_vl53l1_sat.VL53L1_GetMultiRangingData(pMultiRangingData);
       no_of_object_found=pMultiRangingData->NumberOfObjectsFound;
       snprintf(report, sizeof(report), "VL53L1 Satellite: Count=%d, #Objs=%1d ", pMultiRangingData->StreamCount, no_of_object_found);
       SerialPort.print(report);
@@ -137,7 +137,7 @@ void loop()
       SerialPort.println("");
       if (status==0)
       {
-         status = sensor_vl53l1_sat->VL53L1_ClearInterruptAndStartMeasurement();
+         status = sensor_vl53l1_sat.VL53L1_ClearInterruptAndStartMeasurement();
       }
    }
 
