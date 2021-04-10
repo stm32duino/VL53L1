@@ -57,6 +57,7 @@
 #include <stdint.h>
 #include <assert.h>
 #include <stdlib.h>
+#include <algorithm>
 
 #define DEV_I2C Wire
 #define SerialPort Serial
@@ -120,7 +121,7 @@ void loop()
       no_of_object_found=pMultiRangingData->NumberOfObjectsFound;
       snprintf(report, sizeof(report), "VL53L1 Satellite: Count=%d, #Objs=%1d ", pMultiRangingData->StreamCount, no_of_object_found);
       SerialPort.print(report);
-      for(j=0;j<no_of_object_found;j++)
+      for(j=0;j<std::min(no_of_object_found, VL53L1_MAX_RANGE_RESULTS);j++)
       {
          if(j!=0)SerialPort.print("\r\n                               ");
          SerialPort.print("status=");
