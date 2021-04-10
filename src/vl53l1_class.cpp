@@ -3853,7 +3853,7 @@ VL53L1_Error VL53L1::VL53L1_I2CRead(uint8_t DeviceAddr, uint8_t RegisterAddr, ui
 #endif
     dev_i2c->beginTransmission(((uint8_t)(((DeviceAddr) >> 1) & 0x7F)));
 #ifdef DEBUG_MODE
-    Serial.print("Writing port number ");
+    Serial.print("Reading port number ");
     Serial.println(RegisterAddr);
 #endif
     uint8_t buffer[2];
