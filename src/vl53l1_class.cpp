@@ -3819,7 +3819,7 @@ VL53L1_Error VL53L1::VL53L1_ReadMulti(VL53L1_DEV Dev, uint16_t index, uint8_t *p
   return status;
 }
 
-VL53L1_Error VL53L1::VL53L1_I2CWrite(uint8_t DeviceAddr, uint8_t RegisterAddr, uint8_t *pBuffer, uint16_t NumByteToWrite)
+VL53L1_Error VL53L1::VL53L1_I2CWrite(uint8_t DeviceAddr, uint16_t RegisterAddr, uint8_t *pBuffer, uint16_t NumByteToWrite)
 {
 #ifdef DEBUG_MODE
   Serial.print("Beginning transmission to ");
