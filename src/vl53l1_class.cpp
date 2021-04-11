@@ -3830,9 +3830,7 @@ VL53L1_Error VL53L1::VL53L1_I2CWrite(uint8_t DeviceAddr, uint16_t RegisterAddr, 
   Serial.print("Writing port number ");
   Serial.println(RegisterAddr);
 #endif
-  uint8_t buffer[2];
-  buffer[0] = (uint8_t) RegisterAddr >> 8;
-  buffer[1] = (uint8_t) RegisterAddr & 0xFF;
+  const uint8_t buffer[2] {RegisterAddr >> 8, RegisterAddr & 0xFF };
   dev_i2c->write(buffer, 2);
   for (int i = 0 ; i < NumByteToWrite ; i++) {
     dev_i2c->write(pBuffer[i]);
