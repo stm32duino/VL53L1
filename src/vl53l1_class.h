@@ -341,12 +341,12 @@ class VL53L1 : public RangeSensor {
 #ifdef DEBUG_MODE
       uint8_t byteData;
       uint16_t wordData;
-      status = VL53L1_RdByte(Dev, 0x010F, &byteData);
+      status = VL53L1_RdByte(Dev, VL53L1_IDENTIFICATION__MODEL_ID, &byteData);
       Serial.println("VL53L1 Model_ID: " + String(byteData));
-      status = VL53L1_RdByte(Dev, 0x0110, &byteData);
+      status = VL53L1_RdByte(Dev, VL53L1_IDENTIFICATION__MODULE_TYPE, &byteData);
       Serial.println("VL53L1 Module_Type: " + String(byteData));
-      status = VL53L1_RdWord(Dev, 0x010F, &wordData);
-      Serial.println("VL53L1: " + String(wordData));
+      status = VL53L1_RdWord(Dev, VL53L1_IDENTIFICATION__MODULE_ID, &wordData);
+      Serial.println("VL53L1 Module_ID: " + String(wordData));
 #endif
 
       if (status == VL53L1_ERROR_NONE) {
