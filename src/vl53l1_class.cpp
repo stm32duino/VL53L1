@@ -3842,7 +3842,7 @@ VL53L1_Error VL53L1::VL53L1_I2CWrite(uint8_t DeviceAddr, uint8_t RegisterAddr, u
   return 0;
 }
 
-VL53L1_Error VL53L1::VL53L1_I2CRead(uint8_t DeviceAddr, uint8_t RegisterAddr, uint8_t *pBuffer, uint16_t NumByteToRead)
+VL53L1_Error VL53L1::VL53L1_I2CRead(uint8_t DeviceAddr, uint16_t RegisterAddr, uint8_t *pBuffer, uint16_t NumByteToRead)
 {
   int status = 0;
   //Loop until the port is transmitted correctly
