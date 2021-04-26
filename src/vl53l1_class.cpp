@@ -3819,7 +3819,7 @@ VL53L1_Error VL53L1::VL53L1_ReadMulti(VL53L1_DEV Dev, uint16_t index, uint8_t *p
   return status;
 }
 
-VL53L1_Error VL53L1::VL53L1_I2CWrite(uint8_t DeviceAddr, uint8_t RegisterAddr, uint8_t *pBuffer, uint16_t NumByteToWrite)
+VL53L1_Error VL53L1::VL53L1_I2CWrite(uint8_t DeviceAddr, uint16_t RegisterAddr, uint8_t *pBuffer, uint16_t NumByteToWrite)
 {
 #ifdef DEBUG_MODE
   Serial.print("Beginning transmission to ");
@@ -3830,9 +3830,7 @@ VL53L1_Error VL53L1::VL53L1_I2CWrite(uint8_t DeviceAddr, uint8_t RegisterAddr, u
   Serial.print("Writing port number ");
   Serial.println(RegisterAddr);
 #endif
-  uint8_t buffer[2];
-  buffer[0] = (uint8_t) RegisterAddr >> 8;
-  buffer[1] = (uint8_t) RegisterAddr & 0xFF;
+  const uint8_t buffer[2] {RegisterAddr >> 8, RegisterAddr & 0xFF };
   dev_i2c->write(buffer, 2);
   for (int i = 0 ; i < NumByteToWrite ; i++) {
     dev_i2c->write(pBuffer[i]);
@@ -3842,7 +3840,7 @@ VL53L1_Error VL53L1::VL53L1_I2CWrite(uint8_t DeviceAddr, uint8_t RegisterAddr, u
   return 0;
 }
 
-VL53L1_Error VL53L1::VL53L1_I2CRead(uint8_t DeviceAddr, uint8_t RegisterAddr, uint8_t *pBuffer, uint16_t NumByteToRead)
+VL53L1_Error VL53L1::VL53L1_I2CRead(uint8_t DeviceAddr, uint16_t RegisterAddr, uint8_t *pBuffer, uint16_t NumByteToRead)
 {
   int status = 0;
   //Loop until the port is transmitted correctly
@@ -3856,9 +3854,7 @@ VL53L1_Error VL53L1::VL53L1_I2CRead(uint8_t DeviceAddr, uint8_t RegisterAddr, ui
     Serial.print("Writing port number ");
     Serial.println(RegisterAddr);
 #endif
-    uint8_t buffer[2];
-    buffer[0] = (uint8_t) RegisterAddr >> 8;
-    buffer[1] = (uint8_t) RegisterAddr & 0xFF;
+    const uint8_t buffer[2] {RegisterAddr >> 8, RegisterAddr & 0xFF };
     dev_i2c->write(buffer, 2);
     status = dev_i2c->endTransmission(false);
     //Fix for some STM32 boards
