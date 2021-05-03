@@ -94,7 +94,7 @@ void setup()
 
    // Start Measurements
    sensor_vl53l1_sat.VL53L1_SetPresetMode(VL53L1_PRESETMODE_RANGING);
-   sensor_vl53l1_sat.VL53L1_StartMeasurement();
+   sensor_vl53l1_sat.VL53L1_ClearInterruptAndStartMeasurement();
 }
 
 void loop()
