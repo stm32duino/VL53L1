@@ -3897,13 +3897,10 @@ VL53L1_Error VL53L1::VL53L1_WaitUs(VL53L1_Dev_t *pdev, int32_t wait_us)
    * This could change in future Arduino releases.
    * https://www.arduino.cc/reference/en/language/functions/time/delaymicroseconds/
    */
-  if(wait_us>16383)
-  {
-    VL53L1_WaitMs(pdev, wait_us/1000);
-    delayMicroseconds(wait_us%1000);
-  }
-  else
-  {
+  if (wait_us > 16383) {
+    VL53L1_WaitMs(pdev, wait_us / 1000);
+    delayMicroseconds(wait_us % 1000);
+  } else {
     delayMicroseconds(wait_us);
   }
   return VL53L1_ERROR_NONE;
