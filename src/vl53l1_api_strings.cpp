@@ -222,7 +222,7 @@ VL53L1_Error VL53L1Base::VL53L1_get_sequence_steps_info(
 }
 
 VL53L1_Error VL53L1Base::VL53L1_get_limit_check_info(uint16_t LimitCheckId,
-                                                 char *pLimitCheckString)
+                                                     char *pLimitCheckString)
 {
   VL53L1_Error Status = VL53L1_ERROR_NONE;
 

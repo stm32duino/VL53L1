@@ -266,9 +266,8 @@ class VL53L1Base : public RangeSensor {
   public:
     /** Constructor
      * @param[in] i2c device I2C to be used for communication
-     * @param[in] pin shutdown pin to be used as component GPIO0
      */
-    VL53L1Base(TwoWire *i2c, int pin) : RangeSensor(), dev_i2c(i2c), gpio0(pin)
+    VL53L1Base(TwoWire *i2c) : RangeSensor(), dev_i2c(i2c)
     {
       Dev = &MyDevice;
       memset((void *)Dev, 0x0, sizeof(VL53L1_Dev_t));
@@ -284,17 +283,13 @@ class VL53L1Base : public RangeSensor {
 
     virtual int begin()
     {
-      if (gpio0 >= 0) {
-        pinMode(gpio0, OUTPUT);
-      }
+      VL53L1_XshutInitialize();
       return 0;
     }
 
     virtual int end()
     {
-      if (gpio0 >= 0) {
-        pinMode(gpio0, INPUT);
-      }
+      VL53L1_XshutDeinitialize();
       return 0;
     }
 
@@ -307,9 +302,7 @@ class VL53L1Base : public RangeSensor {
     /* turns on the sensor */
     virtual void VL53L1_On(void)
     {
-      if (gpio0 >= 0) {
-        digitalWrite(gpio0, HIGH);
-      }
+      VL53L1_XshutSetHigh();
       delay(10);
     }
 
@@ -320,9 +313,7 @@ class VL53L1Base : public RangeSensor {
     /* turns off the sensor */
     virtual void VL53L1_Off(void)
     {
-      if (gpio0 >= 0) {
-        digitalWrite(gpio0, LOW);
-      }
+      VL53L1_XshutSetLow();
       delay(10);
     }
 
@@ -5305,18 +5296,85 @@ class VL53L1Base : public RangeSensor {
 
     VL53L1_Error VL53L1_WaitValueMaskEx(VL53L1_Dev_t *pdev, uint32_t timeout_ms, uint16_t index, uint8_t value, uint8_t mask, uint32_t poll_delay_ms);
 
+  private:
 
+    /**
+     * @name Helper functions to control Xshutdown signal.
+     *
+     * The Xshutdown signal (XSHUT) is sometimes also referred to as GPIO0.
+     * These functions are virtual in order to allow different ways for
+     * controlling the signal.
+     * For example using an output pin of the microcontroller or indirectly
+     * using an IO expander or a shift register.
+     */
+    ///@{
+    /**
+     * Set XSHUT to low.
+     */
+    virtual void VL53L1_XshutSetLow() = 0;
+
+    /**
+     * Set XSHUT to high.
+     */
+    virtual void VL53L1_XshutSetHigh() = 0;
+
+    /**
+     * Initialize the control mechanism for XSHUT pin.
+     */
+    virtual void VL53L1_XshutDeinitialize() = 0;
+
+    /**
+     * Initialize the control mechanism for XSHUT pin.
+     */
+    virtual void VL53L1_XshutInitialize() = 0;
+    ///@}
 
   protected:
 
     /* IO Device */
     TwoWire *dev_i2c;
-    /* Digital out pin */
-    int gpio0;
     /* Device data */
     VL53L1_Dev_t MyDevice;
     VL53L1_DEV Dev;
 };
 
+/** Class representing a VL53L1 sensor component
+ *
+ * The Xshutdown pin (XSHUT / GPIO0) is controlled by a microcontroller
+ * general purpose output pin.
+ */
+class VL53L1 : public VL53L1Base {
+  public:
+    /**
+     * @param[in] i2c device I2C to be used for communication
+     * @param[in] pin shutdown pin to be used as component GPIO0
+     */
+    VL53L1(TwoWire *const i2c, const int pin);
+
+  protected:
+
+    /**
+     * Set pin controlling XSHUT to low.
+     */
+    virtual void VL53L1_XshutSetLow() override;
+
+    /**
+     * Set pin controlling XSHUT to high.
+     */
+    virtual void VL53L1_XshutSetHigh() override;
+
+    /**
+     * Set pin mode controlling XSHUT to input.
+     */
+    virtual void VL53L1_XshutDeinitialize() override;
+
+    /**
+     * Set pin mode controlling XSHUT to output.
+     */
+    virtual void VL53L1_XshutInitialize() override;
+
+    /** Number of digital output pin controlling XSHUT. */
+    int xshut;
+};
 
 #endif /* _VL53L1_CLASS_H_ */

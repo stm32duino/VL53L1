@@ -3974,4 +3974,35 @@ VL53L1_Error VL53L1Base::VL53L1_WaitValueMaskEx(VL53L1_Dev_t *pdev, uint32_t tim
   return status;
 }
 
+VL53L1::VL53L1(TwoWire *const i2c, const int pin) : VL53L1Base(i2c), xshut(pin)
+{
+}
 
+void VL53L1::VL53L1_XshutSetLow()
+{
+  if (xshut >= 0) {
+    digitalWrite(xshut, LOW);
+  }
+
+}
+
+void VL53L1::VL53L1_XshutSetHigh()
+{
+  if (xshut >= 0) {
+    digitalWrite(xshut, HIGH);
+  }
+}
+
+void VL53L1::VL53L1_XshutDeinitialize()
+{
+  if (xshut >= 0) {
+    pinMode(xshut, INPUT);
+  }
+}
+
+void VL53L1::VL53L1_XshutInitialize()
+{
+  if (xshut >= 0) {
+    pinMode(xshut, OUTPUT);
+  }
+}

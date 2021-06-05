@@ -71,7 +71,7 @@
 #define VL53L1_MAX_I2C_XFER_SIZE 256
 
 VL53L1_Error VL53L1Base::select_offset_per_vcsel(VL53L1_LLDriverData_t *pdev,
-                                             int16_t *poffset)
+                                                 int16_t *poffset)
 {
   VL53L1_Error status = VL53L1_ERROR_NONE;
   int16_t tA, tB;
@@ -105,8 +105,8 @@ VL53L1_Error VL53L1Base::select_offset_per_vcsel(VL53L1_LLDriverData_t *pdev,
 }
 
 void VL53L1Base::vl53l1_diff_histo_stddev(VL53L1_LLDriverData_t *pdev,
-                                      VL53L1_histogram_bin_data_t *pdata, uint8_t timing, uint8_t HighIndex,
-                                      uint8_t prev_pos, int32_t *pdiff_histo_stddev)
+                                          VL53L1_histogram_bin_data_t *pdata, uint8_t timing, uint8_t HighIndex,
+                                          uint8_t prev_pos, int32_t *pdiff_histo_stddev)
 {
   uint16_t   bin                      = 0;
   int32_t    total_rate_pre = 0;
@@ -134,7 +134,7 @@ void VL53L1Base::vl53l1_diff_histo_stddev(VL53L1_LLDriverData_t *pdev,
 }
 
 void VL53L1Base::vl53l1_histo_merge(VL53L1_DEV Dev,
-                                VL53L1_histogram_bin_data_t *pdata)
+                                    VL53L1_histogram_bin_data_t *pdata)
 {
   VL53L1_LLDriverData_t *pdev =
     VL53L1DevStructGetLLDriverHandle(Dev);
