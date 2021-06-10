@@ -262,13 +262,13 @@ typedef VL53L1_Dev_t *VL53L1_DEV;
 /* Classes -------------------------------------------------------------------*/
 /** Class representing a VL53L1 sensor component
  */
-class VL53L1 : public RangeSensor {
+class VL53L1Base : public RangeSensor {
   public:
     /** Constructor
      * @param[in] i2c device I2C to be used for communication
      * @param[in] pin shutdown pin to be used as component GPIO0
      */
-    VL53L1(TwoWire *i2c, int pin) : RangeSensor(), dev_i2c(i2c), gpio0(pin)
+    VL53L1Base(TwoWire *i2c, int pin) : RangeSensor(), dev_i2c(i2c), gpio0(pin)
     {
       Dev = &MyDevice;
       memset((void *)Dev, 0x0, sizeof(VL53L1_Dev_t));
@@ -278,7 +278,7 @@ class VL53L1 : public RangeSensor {
 
     /** Destructor
      */
-    virtual ~VL53L1() {}
+    virtual ~VL53L1Base() {}
     /* warning: VL53L1 class inherits from GenericSensor, RangeSensor and LightSensor, that haven`t a destructor.
        The warning should request to introduce a virtual destructor to make sure to delete the object */
 

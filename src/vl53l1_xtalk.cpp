@@ -19,7 +19,7 @@
 #include "vl53l1_class.h"
 
 
-VL53L1_Error VL53L1::VL53L1_xtalk_calibration_process_data(
+VL53L1_Error VL53L1Base::VL53L1_xtalk_calibration_process_data(
   VL53L1_xtalk_range_results_t    *pxtalk_results,
   VL53L1_xtalk_histogram_data_t   *pxtalk_shape,
   VL53L1_xtalk_calibration_results_t  *pxtalk_cal)
@@ -125,7 +125,7 @@ ENDFUNC:
 }
 
 
-VL53L1_Error VL53L1::VL53L1_generate_dual_reflectance_xtalk_samples(
+VL53L1_Error VL53L1Base::VL53L1_generate_dual_reflectance_xtalk_samples(
   VL53L1_xtalk_range_results_t  *pxtalk_results,
   uint16_t      expected_target_distance_mm,
   uint8_t         higher_reflectance,
@@ -197,7 +197,7 @@ VL53L1_Error VL53L1::VL53L1_generate_dual_reflectance_xtalk_samples(
 }
 
 
-VL53L1_Error VL53L1::VL53L1_f_050(
+VL53L1_Error VL53L1Base::VL53L1_f_050(
   VL53L1_histogram_bin_data_t *pzone_avg_1,
   VL53L1_histogram_bin_data_t *pzone_avg_2,
   uint16_t      expected_target_distance,
@@ -272,7 +272,7 @@ VL53L1_Error VL53L1::VL53L1_f_050(
   return status;
 }
 
-VL53L1_Error VL53L1::VL53L1_f_049(
+VL53L1_Error VL53L1Base::VL53L1_f_049(
   VL53L1_histogram_bin_data_t        *pavg_bins,
   VL53L1_xtalk_algo_data_t           *pdebug,
   VL53L1_xtalk_range_data_t          *pxtalk_data,
@@ -328,7 +328,7 @@ VL53L1_Error VL53L1::VL53L1_f_049(
 }
 
 
-VL53L1_Error VL53L1::VL53L1_f_047(
+VL53L1_Error VL53L1Base::VL53L1_f_047(
   VL53L1_xtalk_range_results_t   *pxtalk_results,
   VL53L1_xtalk_algo_data_t       *pdebug,
   int16_t                        *xgradient,
@@ -461,7 +461,7 @@ VL53L1_Error VL53L1::VL53L1_f_047(
 }
 
 
-VL53L1_Error VL53L1::VL53L1_f_048(
+VL53L1_Error VL53L1Base::VL53L1_f_048(
   VL53L1_xtalk_range_data_t *pxtalk_data,
   VL53L1_xtalk_algo_data_t  *pdebug,
   uint32_t                 *xtalk_mean_offset_kcps
@@ -527,7 +527,7 @@ VL53L1_Error VL53L1::VL53L1_f_048(
 
 
 
-VL53L1_Error VL53L1::VL53L1_f_053(
+VL53L1_Error VL53L1Base::VL53L1_f_053(
   VL53L1_histogram_bin_data_t *phist_data,
   VL53L1_xtalk_range_data_t      *pxtalk_data,
   VL53L1_xtalk_algo_data_t       *pdebug,
@@ -624,7 +624,7 @@ FAIL:
 }
 
 
-VL53L1_Error VL53L1::VL53L1_f_054(
+VL53L1_Error VL53L1Base::VL53L1_f_054(
   VL53L1_customer_nvm_managed_t *pcustomer,
   VL53L1_dynamic_config_t       *pdyn_cfg,
   VL53L1_xtalk_histogram_data_t *pxtalk_shape,
@@ -688,7 +688,7 @@ VL53L1_Error VL53L1::VL53L1_f_054(
 }
 
 
-VL53L1_Error VL53L1::VL53L1_f_040(
+VL53L1_Error VL53L1Base::VL53L1_f_040(
   uint32_t                       mean_offset,
   int16_t                        xgradient,
   int16_t                        ygradient,
@@ -818,7 +818,7 @@ VL53L1_Error VL53L1::VL53L1_f_040(
 
 
 
-VL53L1_Error VL53L1::VL53L1_f_041(
+VL53L1_Error VL53L1Base::VL53L1_f_041(
   VL53L1_histogram_bin_data_t    *phist_data,
   VL53L1_xtalk_histogram_shape_t *pxtalk_data,
   uint32_t                        xtalk_rate_kcps,
@@ -877,7 +877,7 @@ VL53L1_Error VL53L1::VL53L1_f_041(
 }
 
 
-VL53L1_Error VL53L1::VL53L1_f_055(
+VL53L1_Error VL53L1Base::VL53L1_f_055(
   VL53L1_histogram_bin_data_t *phist_data,
   VL53L1_histogram_bin_data_t *pxtalk_data,
   uint8_t         xtalk_bin_offset)
@@ -916,7 +916,7 @@ VL53L1_Error VL53L1::VL53L1_f_055(
 }
 
 
-VL53L1_Error VL53L1::VL53L1_f_052(
+VL53L1_Error VL53L1Base::VL53L1_f_052(
   VL53L1_histogram_bin_data_t   *pxtalk_data,
   uint32_t            amb_threshold,
   uint8_t           VL53L1_p_022,
@@ -1035,7 +1035,7 @@ VL53L1_Error VL53L1::VL53L1_f_052(
 }
 
 
-VL53L1_Error VL53L1::VL53L1_f_051(
+VL53L1_Error VL53L1Base::VL53L1_f_051(
   uint8_t                      sigma_mult,
   int32_t                      VL53L1_p_004,
   uint32_t                    *ambient_noise)

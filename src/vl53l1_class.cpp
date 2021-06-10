@@ -110,7 +110,7 @@ static int32_t BDTable[VL53L1_TUNING_MAX_TUNABLE_KEY] = {
 };
 
 
-VL53L1_Error VL53L1::SingleTargetXTalkCalibration(VL53L1_DEV Dev)
+VL53L1_Error VL53L1Base::SingleTargetXTalkCalibration(VL53L1_DEV Dev)
 {
   VL53L1_Error Status = VL53L1_ERROR_NONE;
 
@@ -248,7 +248,7 @@ ENDFUNC:
 }
 
 
-VL53L1_Error VL53L1::CheckValidRectRoi(VL53L1_UserRoi_t ROI)
+VL53L1_Error VL53L1Base::CheckValidRectRoi(VL53L1_UserRoi_t ROI)
 {
   VL53L1_Error Status = VL53L1_ERROR_NONE;
 
@@ -268,7 +268,7 @@ VL53L1_Error VL53L1::CheckValidRectRoi(VL53L1_UserRoi_t ROI)
   return Status;
 }
 
-VL53L1_GPIO_Interrupt_Mode VL53L1::ConvertModeToLLD(VL53L1_Error *pStatus, VL53L1_ThresholdMode CrossMode)
+VL53L1_GPIO_Interrupt_Mode VL53L1Base::ConvertModeToLLD(VL53L1_Error *pStatus, VL53L1_ThresholdMode CrossMode)
 {
   VL53L1_GPIO_Interrupt_Mode Mode;
 
@@ -293,7 +293,7 @@ VL53L1_GPIO_Interrupt_Mode VL53L1::ConvertModeToLLD(VL53L1_Error *pStatus, VL53L
   return Mode;
 }
 
-VL53L1_ThresholdMode VL53L1::ConvertModeFromLLD(VL53L1_Error *pStatus, VL53L1_GPIO_Interrupt_Mode CrossMode)
+VL53L1_ThresholdMode VL53L1Base::ConvertModeFromLLD(VL53L1_Error *pStatus, VL53L1_GPIO_Interrupt_Mode CrossMode)
 {
   VL53L1_ThresholdMode Mode;
 
@@ -320,7 +320,7 @@ VL53L1_ThresholdMode VL53L1::ConvertModeFromLLD(VL53L1_Error *pStatus, VL53L1_GP
 
 
 
-VL53L1_Error VL53L1::VL53L1_GetVersion(VL53L1_Version_t *pVersion)
+VL53L1_Error VL53L1Base::VL53L1_GetVersion(VL53L1_Version_t *pVersion)
 {
   VL53L1_Error Status = VL53L1_ERROR_NONE;
 
@@ -336,7 +336,7 @@ VL53L1_Error VL53L1::VL53L1_GetVersion(VL53L1_Version_t *pVersion)
   return Status;
 }
 
-VL53L1_Error VL53L1::VL53L1_GetProductRevision(uint8_t *pProductRevisionMajor, uint8_t *pProductRevisionMinor)
+VL53L1_Error VL53L1Base::VL53L1_GetProductRevision(uint8_t *pProductRevisionMajor, uint8_t *pProductRevisionMinor)
 {
   VL53L1_Error Status = VL53L1_ERROR_NONE;
   uint8_t revision_id;
@@ -354,7 +354,7 @@ VL53L1_Error VL53L1::VL53L1_GetProductRevision(uint8_t *pProductRevisionMajor, u
 
 }
 
-VL53L1_Error VL53L1::VL53L1_GetDeviceInfo(VL53L1_DeviceInfo_t *pVL53L1_DeviceInfo)
+VL53L1_Error VL53L1Base::VL53L1_GetDeviceInfo(VL53L1_DeviceInfo_t *pVL53L1_DeviceInfo)
 {
   VL53L1_Error Status = VL53L1_ERROR_NONE;
   uint8_t revision_id;
@@ -399,7 +399,7 @@ VL53L1_Error VL53L1::VL53L1_GetDeviceInfo(VL53L1_DeviceInfo_t *pVL53L1_DeviceInf
   return Status;
 }
 
-VL53L1_Error VL53L1::VL53L1_GetUID(uint64_t *pUid)
+VL53L1_Error VL53L1Base::VL53L1_GetUID(uint64_t *pUid)
 {
   VL53L1_Error Status = VL53L1_ERROR_NONE;
   uint8_t fmtdata[8];
@@ -416,7 +416,7 @@ VL53L1_Error VL53L1::VL53L1_GetUID(uint64_t *pUid)
   return Status;
 }
 
-VL53L1_Error VL53L1::VL53L1_GetRangeStatusString(uint8_t RangeStatus, char *pRangeStatusString)
+VL53L1_Error VL53L1Base::VL53L1_GetRangeStatusString(uint8_t RangeStatus, char *pRangeStatusString)
 {
   VL53L1_Error Status = VL53L1_ERROR_NONE;
 
@@ -429,7 +429,7 @@ VL53L1_Error VL53L1::VL53L1_GetRangeStatusString(uint8_t RangeStatus, char *pRan
   return Status;
 }
 
-VL53L1_Error VL53L1::VL53L1_GetPalErrorString(VL53L1_Error PalErrorCode, char *pPalErrorString)
+VL53L1_Error VL53L1Base::VL53L1_GetPalErrorString(VL53L1_Error PalErrorCode, char *pPalErrorString)
 {
   VL53L1_Error Status = VL53L1_ERROR_NONE;
 
@@ -441,7 +441,7 @@ VL53L1_Error VL53L1::VL53L1_GetPalErrorString(VL53L1_Error PalErrorCode, char *p
   return Status;
 }
 
-VL53L1_Error VL53L1::VL53L1_GetPalStateString(VL53L1_State PalStateCode, char *pPalStateString)
+VL53L1_Error VL53L1Base::VL53L1_GetPalStateString(VL53L1_State PalStateCode, char *pPalStateString)
 {
   VL53L1_Error Status = VL53L1_ERROR_NONE;
 
@@ -453,7 +453,7 @@ VL53L1_Error VL53L1::VL53L1_GetPalStateString(VL53L1_State PalStateCode, char *p
   return Status;
 }
 
-VL53L1_Error VL53L1::VL53L1_GetPalState(VL53L1_State *pPalState)
+VL53L1_Error VL53L1Base::VL53L1_GetPalState(VL53L1_State *pPalState)
 {
   VL53L1_Error Status = VL53L1_ERROR_NONE;
 
@@ -466,7 +466,7 @@ VL53L1_Error VL53L1::VL53L1_GetPalState(VL53L1_State *pPalState)
 }
 
 
-VL53L1_Error VL53L1::VL53L1_SetDeviceAddress(uint8_t DeviceAddress)
+VL53L1_Error VL53L1Base::VL53L1_SetDeviceAddress(uint8_t DeviceAddress)
 {
   VL53L1_Error Status = VL53L1_ERROR_NONE;
 
@@ -483,7 +483,7 @@ VL53L1_Error VL53L1::VL53L1_SetDeviceAddress(uint8_t DeviceAddress)
   return Status;
 }
 
-VL53L1_Error VL53L1::VL53L1_DataInit()
+VL53L1_Error VL53L1Base::VL53L1_DataInit()
 {
   VL53L1_Error Status = VL53L1_ERROR_NONE;
   uint8_t i;
@@ -539,7 +539,7 @@ VL53L1_Error VL53L1::VL53L1_DataInit()
 }
 
 
-VL53L1_Error VL53L1::VL53L1_StaticInit()
+VL53L1_Error VL53L1Base::VL53L1_StaticInit()
 {
   VL53L1_Error Status = VL53L1_ERROR_NONE;
   uint8_t  measurement_mode;
@@ -559,7 +559,7 @@ VL53L1_Error VL53L1::VL53L1_StaticInit()
   return Status;
 }
 
-VL53L1_Error VL53L1::VL53L1_WaitDeviceBooted()
+VL53L1_Error VL53L1Base::VL53L1_WaitDeviceBooted()
 {
   VL53L1_Error Status = VL53L1_ERROR_NONE;
 
@@ -575,7 +575,7 @@ VL53L1_Error VL53L1::VL53L1_WaitDeviceBooted()
 
 
 
-VL53L1_Error VL53L1::ComputeDevicePresetMode(VL53L1_PresetModes PresetMode, VL53L1_DistanceModes DistanceMode, VL53L1_DevicePresetModes *pDevicePresetMode)
+VL53L1_Error VL53L1Base::ComputeDevicePresetMode(VL53L1_PresetModes PresetMode, VL53L1_DistanceModes DistanceMode, VL53L1_DevicePresetModes *pDevicePresetMode)
 {
   VL53L1_Error Status = VL53L1_ERROR_NONE;
 
@@ -659,7 +659,7 @@ VL53L1_Error VL53L1::ComputeDevicePresetMode(VL53L1_PresetModes PresetMode, VL53
   return Status;
 }
 
-VL53L1_Error VL53L1::SetPresetMode(VL53L1_DEV Dev, VL53L1_PresetModes PresetMode, VL53L1_DistanceModes DistanceMode, uint32_t inter_measurement_period_ms)
+VL53L1_Error VL53L1Base::SetPresetMode(VL53L1_DEV Dev, VL53L1_PresetModes PresetMode, VL53L1_DistanceModes DistanceMode, uint32_t inter_measurement_period_ms)
 {
   VL53L1_Error Status = VL53L1_ERROR_NONE;
   VL53L1_DevicePresetModes   device_preset_mode;
@@ -713,7 +713,7 @@ VL53L1_Error VL53L1::SetPresetMode(VL53L1_DEV Dev, VL53L1_PresetModes PresetMode
 }
 
 
-VL53L1_Error VL53L1::VL53L1_SetPresetMode(VL53L1_PresetModes PresetMode)
+VL53L1_Error VL53L1Base::VL53L1_SetPresetMode(VL53L1_PresetModes PresetMode)
 {
   VL53L1_Error Status = VL53L1_ERROR_NONE;
   VL53L1_DistanceModes DistanceMode = VL53L1_DISTANCEMODE_LONG;
@@ -751,7 +751,7 @@ VL53L1_Error VL53L1::VL53L1_SetPresetMode(VL53L1_PresetModes PresetMode)
 }
 
 
-VL53L1_Error VL53L1::VL53L1_GetPresetMode(VL53L1_PresetModes *pPresetMode)
+VL53L1_Error VL53L1Base::VL53L1_GetPresetMode(VL53L1_PresetModes *pPresetMode)
 {
   VL53L1_Error Status = VL53L1_ERROR_NONE;
 
@@ -763,7 +763,7 @@ VL53L1_Error VL53L1::VL53L1_GetPresetMode(VL53L1_PresetModes *pPresetMode)
   return Status;
 }
 
-VL53L1_Error VL53L1::VL53L1_SetDistanceMode(VL53L1_DistanceModes DistanceMode)
+VL53L1_Error VL53L1Base::VL53L1_SetDistanceMode(VL53L1_DistanceModes DistanceMode)
 {
   VL53L1_Error Status = VL53L1_ERROR_NONE;
   VL53L1_PresetModes PresetMode;
@@ -826,7 +826,7 @@ VL53L1_Error VL53L1::VL53L1_SetDistanceMode(VL53L1_DistanceModes DistanceMode)
   return Status;
 }
 
-VL53L1_Error VL53L1::VL53L1_GetDistanceMode(VL53L1_DistanceModes *pDistanceMode)
+VL53L1_Error VL53L1Base::VL53L1_GetDistanceMode(VL53L1_DistanceModes *pDistanceMode)
 {
   VL53L1_Error Status = VL53L1_ERROR_NONE;
 
@@ -838,7 +838,7 @@ VL53L1_Error VL53L1::VL53L1_GetDistanceMode(VL53L1_DistanceModes *pDistanceMode)
   return Status;
 }
 
-VL53L1_Error VL53L1::VL53L1_SetOutputMode(VL53L1_OutputModes OutputMode)
+VL53L1_Error VL53L1Base::VL53L1_SetOutputMode(VL53L1_OutputModes OutputMode)
 {
   VL53L1_Error Status = VL53L1_ERROR_NONE;
 
@@ -855,7 +855,7 @@ VL53L1_Error VL53L1::VL53L1_SetOutputMode(VL53L1_OutputModes OutputMode)
   return Status;
 }
 
-VL53L1_Error VL53L1::VL53L1_GetOutputMode(VL53L1_OutputModes *pOutputMode)
+VL53L1_Error VL53L1Base::VL53L1_GetOutputMode(VL53L1_OutputModes *pOutputMode)
 {
   VL53L1_Error Status = VL53L1_ERROR_NONE;
 
@@ -869,7 +869,7 @@ VL53L1_Error VL53L1::VL53L1_GetOutputMode(VL53L1_OutputModes *pOutputMode)
 
 
 
-VL53L1_Error VL53L1::VL53L1_SetMeasurementTimingBudgetMicroSeconds(uint32_t MeasurementTimingBudgetMicroSeconds)
+VL53L1_Error VL53L1Base::VL53L1_SetMeasurementTimingBudgetMicroSeconds(uint32_t MeasurementTimingBudgetMicroSeconds)
 {
   VL53L1_Error Status = VL53L1_ERROR_NONE;
   uint8_t Mm1Enabled;
@@ -997,7 +997,7 @@ VL53L1_Error VL53L1::VL53L1_SetMeasurementTimingBudgetMicroSeconds(uint32_t Meas
 }
 
 
-VL53L1_Error VL53L1::VL53L1_GetMeasurementTimingBudgetMicroSeconds(uint32_t *pMeasurementTimingBudgetMicroSeconds)
+VL53L1_Error VL53L1Base::VL53L1_GetMeasurementTimingBudgetMicroSeconds(uint32_t *pMeasurementTimingBudgetMicroSeconds)
 {
   VL53L1_Error Status = VL53L1_ERROR_NONE;
   uint8_t Mm1Enabled = 0;
@@ -1091,7 +1091,7 @@ VL53L1_Error VL53L1::VL53L1_GetMeasurementTimingBudgetMicroSeconds(uint32_t *pMe
 
 
 
-VL53L1_Error VL53L1::VL53L1_SetInterMeasurementPeriodMilliSeconds(uint32_t InterMeasurementPeriodMilliSeconds)
+VL53L1_Error VL53L1Base::VL53L1_SetInterMeasurementPeriodMilliSeconds(uint32_t InterMeasurementPeriodMilliSeconds)
 {
   VL53L1_Error Status = VL53L1_ERROR_NONE;
   uint32_t adjustedIMP;
@@ -1109,7 +1109,7 @@ VL53L1_Error VL53L1::VL53L1_SetInterMeasurementPeriodMilliSeconds(uint32_t Inter
   return Status;
 }
 
-VL53L1_Error VL53L1::VL53L1_GetInterMeasurementPeriodMilliSeconds(uint32_t *pInterMeasurementPeriodMilliSeconds)
+VL53L1_Error VL53L1Base::VL53L1_GetInterMeasurementPeriodMilliSeconds(uint32_t *pInterMeasurementPeriodMilliSeconds)
 {
   VL53L1_Error Status = VL53L1_ERROR_NONE;
   uint32_t adjustedIMP;
@@ -1126,7 +1126,7 @@ VL53L1_Error VL53L1::VL53L1_GetInterMeasurementPeriodMilliSeconds(uint32_t *pInt
   return Status;
 }
 
-VL53L1_Error VL53L1::VL53L1_SetDmaxReflectance(FixPoint1616_t DmaxReflectance)
+VL53L1_Error VL53L1Base::VL53L1_SetDmaxReflectance(FixPoint1616_t DmaxReflectance)
 {
   VL53L1_Error Status = VL53L1_ERROR_NONE;
   VL53L1_dmax_reflectance_array_t dmax_reflectances;
@@ -1153,7 +1153,7 @@ VL53L1_Error VL53L1::VL53L1_SetDmaxReflectance(FixPoint1616_t DmaxReflectance)
   return Status;
 }
 
-VL53L1_Error VL53L1::VL53L1_GetDmaxReflectance(FixPoint1616_t *pDmaxReflectance)
+VL53L1_Error VL53L1Base::VL53L1_GetDmaxReflectance(FixPoint1616_t *pDmaxReflectance)
 {
   VL53L1_Error Status = VL53L1_ERROR_NONE;
   VL53L1_dmax_reflectance_array_t dmax_reflectances;
@@ -1172,7 +1172,7 @@ VL53L1_Error VL53L1::VL53L1_GetDmaxReflectance(FixPoint1616_t *pDmaxReflectance)
 }
 
 
-VL53L1_Error VL53L1::VL53L1_SetDmaxMode(VL53L1_DeviceDmaxModes DmaxMode)
+VL53L1_Error VL53L1Base::VL53L1_SetDmaxMode(VL53L1_DeviceDmaxModes DmaxMode)
 {
 
   VL53L1_Error  Status = VL53L1_ERROR_NONE;
@@ -1203,7 +1203,7 @@ VL53L1_Error VL53L1::VL53L1_SetDmaxMode(VL53L1_DeviceDmaxModes DmaxMode)
 }
 
 
-VL53L1_Error VL53L1::VL53L1_GetDmaxMode(VL53L1_DeviceDmaxModes *pDmaxMode)
+VL53L1_Error VL53L1Base::VL53L1_GetDmaxMode(VL53L1_DeviceDmaxModes *pDmaxMode)
 {
   VL53L1_Error  Status = VL53L1_ERROR_NONE;
   VL53L1_DeviceDmaxMode dmax_mode;
@@ -1239,7 +1239,7 @@ VL53L1_Error VL53L1::VL53L1_GetDmaxMode(VL53L1_DeviceDmaxModes *pDmaxMode)
 
 
 
-VL53L1_Error VL53L1::VL53L1_GetNumberOfLimitCheck(uint16_t *pNumberOfLimitCheck)
+VL53L1_Error VL53L1Base::VL53L1_GetNumberOfLimitCheck(uint16_t *pNumberOfLimitCheck)
 {
   VL53L1_Error Status = VL53L1_ERROR_NONE;
 
@@ -1251,7 +1251,7 @@ VL53L1_Error VL53L1::VL53L1_GetNumberOfLimitCheck(uint16_t *pNumberOfLimitCheck)
   return Status;
 }
 
-VL53L1_Error VL53L1::VL53L1_GetLimitCheckInfo(uint16_t LimitCheckId, char *pLimitCheckString)
+VL53L1_Error VL53L1Base::VL53L1_GetLimitCheckInfo(uint16_t LimitCheckId, char *pLimitCheckString)
 {
   VL53L1_Error Status = VL53L1_ERROR_NONE;
 
@@ -1264,7 +1264,7 @@ VL53L1_Error VL53L1::VL53L1_GetLimitCheckInfo(uint16_t LimitCheckId, char *pLimi
   return Status;
 }
 
-VL53L1_Error VL53L1::VL53L1_GetLimitCheckStatus(uint16_t LimitCheckId, uint8_t *pLimitCheckStatus)
+VL53L1_Error VL53L1Base::VL53L1_GetLimitCheckStatus(uint16_t LimitCheckId, uint8_t *pLimitCheckStatus)
 {
   VL53L1_Error Status = VL53L1_ERROR_NONE;
   uint8_t Temp8;
@@ -1283,7 +1283,7 @@ VL53L1_Error VL53L1::VL53L1_GetLimitCheckStatus(uint16_t LimitCheckId, uint8_t *
   return Status;
 }
 
-VL53L1_Error VL53L1::SetLimitValue(VL53L1_DEV Dev, uint16_t LimitCheckId, FixPoint1616_t value)
+VL53L1_Error VL53L1Base::SetLimitValue(VL53L1_DEV Dev, uint16_t LimitCheckId, FixPoint1616_t value)
 {
   VL53L1_Error Status = VL53L1_ERROR_NONE;
   uint16_t tmpuint16;
@@ -1308,7 +1308,7 @@ VL53L1_Error VL53L1::SetLimitValue(VL53L1_DEV Dev, uint16_t LimitCheckId, FixPoi
 }
 
 
-VL53L1_Error VL53L1::VL53L1_SetLimitCheckEnable(uint16_t LimitCheckId, uint8_t LimitCheckEnable)
+VL53L1_Error VL53L1Base::VL53L1_SetLimitCheckEnable(uint16_t LimitCheckId, uint8_t LimitCheckEnable)
 {
   VL53L1_Error Status = VL53L1_ERROR_NONE;
   FixPoint1616_t TempFix1616 = 0;
@@ -1341,7 +1341,7 @@ VL53L1_Error VL53L1::VL53L1_SetLimitCheckEnable(uint16_t LimitCheckId, uint8_t L
   return Status;
 }
 
-VL53L1_Error VL53L1::VL53L1_GetLimitCheckEnable(uint16_t LimitCheckId, uint8_t *pLimitCheckEnable)
+VL53L1_Error VL53L1Base::VL53L1_GetLimitCheckEnable(uint16_t LimitCheckId, uint8_t *pLimitCheckEnable)
 {
   VL53L1_Error Status = VL53L1_ERROR_NONE;
   uint8_t Temp8;
@@ -1362,7 +1362,7 @@ VL53L1_Error VL53L1::VL53L1_GetLimitCheckEnable(uint16_t LimitCheckId, uint8_t *
   return Status;
 }
 
-VL53L1_Error VL53L1::VL53L1_SetLimitCheckValue(uint16_t LimitCheckId, FixPoint1616_t LimitCheckValue)
+VL53L1_Error VL53L1Base::VL53L1_SetLimitCheckValue(uint16_t LimitCheckId, FixPoint1616_t LimitCheckValue)
 {
   VL53L1_Error Status = VL53L1_ERROR_NONE;
   uint8_t LimitChecksEnable;
@@ -1398,7 +1398,7 @@ VL53L1_Error VL53L1::VL53L1_SetLimitCheckValue(uint16_t LimitCheckId, FixPoint16
   return Status;
 }
 
-VL53L1_Error VL53L1::VL53L1_GetLimitCheckValue(uint16_t LimitCheckId, FixPoint1616_t *pLimitCheckValue)
+VL53L1_Error VL53L1Base::VL53L1_GetLimitCheckValue(uint16_t LimitCheckId, FixPoint1616_t *pLimitCheckValue)
 {
   VL53L1_Error Status = VL53L1_ERROR_NONE;
   uint16_t MinCountRate;
@@ -1444,7 +1444,7 @@ VL53L1_Error VL53L1::VL53L1_GetLimitCheckValue(uint16_t LimitCheckId, FixPoint16
 
 }
 
-VL53L1_Error VL53L1::VL53L1_GetLimitCheckCurrent(uint16_t LimitCheckId, FixPoint1616_t *pLimitCheckCurrent)
+VL53L1_Error VL53L1Base::VL53L1_GetLimitCheckCurrent(uint16_t LimitCheckId, FixPoint1616_t *pLimitCheckCurrent)
 {
   VL53L1_Error Status = VL53L1_ERROR_NONE;
   FixPoint1616_t TempFix1616 = 0;
@@ -1471,7 +1471,7 @@ VL53L1_Error VL53L1::VL53L1_GetLimitCheckCurrent(uint16_t LimitCheckId, FixPoint
 
 
 
-VL53L1_Error VL53L1::VL53L1_GetMaxNumberOfROI(uint8_t *pMaxNumberOfROI)
+VL53L1_Error VL53L1Base::VL53L1_GetMaxNumberOfROI(uint8_t *pMaxNumberOfROI)
 {
   VL53L1_Error Status = VL53L1_ERROR_NONE;
   VL53L1_PresetModes PresetMode;
@@ -1491,7 +1491,7 @@ VL53L1_Error VL53L1::VL53L1_GetMaxNumberOfROI(uint8_t *pMaxNumberOfROI)
   return Status;
 }
 
-VL53L1_Error VL53L1::VL53L1_SetROI(VL53L1_RoiConfig_t *pRoiConfig)
+VL53L1_Error VL53L1Base::VL53L1_SetROI(VL53L1_RoiConfig_t *pRoiConfig)
 {
   VL53L1_Error Status = VL53L1_ERROR_NONE;
   VL53L1_PresetModes PresetMode;
@@ -1557,7 +1557,7 @@ VL53L1_Error VL53L1::VL53L1_SetROI(VL53L1_RoiConfig_t *pRoiConfig)
   return Status;
 }
 
-VL53L1_Error VL53L1::VL53L1_GetROI(VL53L1_RoiConfig_t *pRoiConfig)
+VL53L1_Error VL53L1Base::VL53L1_GetROI(VL53L1_RoiConfig_t *pRoiConfig)
 {
   VL53L1_Error Status = VL53L1_ERROR_NONE;
   VL53L1_zone_config_t      zone_cfg;
@@ -1598,7 +1598,7 @@ VL53L1_Error VL53L1::VL53L1_GetROI(VL53L1_RoiConfig_t *pRoiConfig)
 
 
 
-VL53L1_Error VL53L1::VL53L1_GetNumberOfSequenceSteps(uint8_t *pNumberOfSequenceSteps)
+VL53L1_Error VL53L1Base::VL53L1_GetNumberOfSequenceSteps(uint8_t *pNumberOfSequenceSteps)
 {
   VL53L1_Error Status = VL53L1_ERROR_NONE;
 
@@ -1612,7 +1612,7 @@ VL53L1_Error VL53L1::VL53L1_GetNumberOfSequenceSteps(uint8_t *pNumberOfSequenceS
   return Status;
 }
 
-VL53L1_Error VL53L1::VL53L1_GetSequenceStepsInfo(VL53L1_SequenceStepId SequenceStepId, char *pSequenceStepsString)
+VL53L1_Error VL53L1Base::VL53L1_GetSequenceStepsInfo(VL53L1_SequenceStepId SequenceStepId, char *pSequenceStepsString)
 {
   VL53L1_Error Status = VL53L1_ERROR_NONE;
 
@@ -1627,7 +1627,7 @@ VL53L1_Error VL53L1::VL53L1_GetSequenceStepsInfo(VL53L1_SequenceStepId SequenceS
   return Status;
 }
 
-VL53L1_Error VL53L1::VL53L1_SetSequenceStepEnable(VL53L1_SequenceStepId SequenceStepId, uint8_t SequenceStepEnabled)
+VL53L1_Error VL53L1Base::VL53L1_SetSequenceStepEnable(VL53L1_SequenceStepId SequenceStepId, uint8_t SequenceStepEnabled)
 {
   VL53L1_Error Status = VL53L1_ERROR_NONE;
   uint32_t MeasurementTimingBudgetMicroSeconds;
@@ -1656,7 +1656,7 @@ VL53L1_Error VL53L1::VL53L1_SetSequenceStepEnable(VL53L1_SequenceStepId Sequence
 }
 
 
-VL53L1_Error VL53L1::VL53L1_GetSequenceStepEnable(VL53L1_SequenceStepId SequenceStepId, uint8_t *pSequenceStepEnabled)
+VL53L1_Error VL53L1Base::VL53L1_GetSequenceStepEnable(VL53L1_SequenceStepId SequenceStepId, uint8_t *pSequenceStepEnabled)
 {
   VL53L1_Error Status = VL53L1_ERROR_NONE;
 
@@ -1679,7 +1679,7 @@ VL53L1_Error VL53L1::VL53L1_GetSequenceStepEnable(VL53L1_SequenceStepId Sequence
 
 
 
-VL53L1_Error VL53L1::VL53L1_StartMeasurement()
+VL53L1_Error VL53L1Base::VL53L1_StartMeasurement()
 {
 #define TIMED_MODE_TIMING_GUARD_MILLISECONDS 4
   VL53L1_Error Status = VL53L1_ERROR_NONE;
@@ -1740,7 +1740,7 @@ VL53L1_Error VL53L1::VL53L1_StartMeasurement()
   return Status;
 }
 
-VL53L1_Error VL53L1::VL53L1_StopMeasurement()
+VL53L1_Error VL53L1Base::VL53L1_StopMeasurement()
 {
   VL53L1_Error Status = VL53L1_ERROR_NONE;
 
@@ -1758,7 +1758,7 @@ VL53L1_Error VL53L1::VL53L1_StopMeasurement()
 }
 
 
-VL53L1_Error VL53L1::VL53L1_ClearInterruptAndStartMeasurement()
+VL53L1_Error VL53L1Base::VL53L1_ClearInterruptAndStartMeasurement()
 {
   VL53L1_Error Status = VL53L1_ERROR_NONE;
   uint8_t DeviceMeasurementMode;
@@ -1775,7 +1775,7 @@ VL53L1_Error VL53L1::VL53L1_ClearInterruptAndStartMeasurement()
 }
 
 
-VL53L1_Error VL53L1::VL53L1_GetMeasurementDataReady(uint8_t *pMeasurementDataReady)
+VL53L1_Error VL53L1Base::VL53L1_GetMeasurementDataReady(uint8_t *pMeasurementDataReady)
 {
   VL53L1_Error Status = VL53L1_ERROR_NONE;
 
@@ -1787,7 +1787,7 @@ VL53L1_Error VL53L1::VL53L1_GetMeasurementDataReady(uint8_t *pMeasurementDataRea
   return Status;
 }
 
-VL53L1_Error VL53L1::VL53L1_WaitMeasurementDataReady()
+VL53L1_Error VL53L1Base::VL53L1_WaitMeasurementDataReady()
 {
   VL53L1_Error Status = VL53L1_ERROR_NONE;
 
@@ -1802,7 +1802,7 @@ VL53L1_Error VL53L1::VL53L1_WaitMeasurementDataReady()
   return Status;
 }
 
-void VL53L1::GenNewPresetMode(int16_t RefRange, VL53L1_DistanceModes InternalDistanceMode, VL53L1_DistanceModes *pNewDistanceMode)
+void VL53L1Base::GenNewPresetMode(int16_t RefRange, VL53L1_DistanceModes InternalDistanceMode, VL53L1_DistanceModes *pNewDistanceMode)
 {
   uint16_t HRLI = 600;
   uint16_t HRLH = 700;
@@ -1837,7 +1837,7 @@ void VL53L1::GenNewPresetMode(int16_t RefRange, VL53L1_DistanceModes InternalDis
   }
 }
 
-void VL53L1::CheckAndChangeDistanceMode(VL53L1_DEV Dev, VL53L1_TargetRangeData_t *pRangeData, int16_t Ambient100DmaxMm, VL53L1_DistanceModes *pNewDistanceMode)
+void VL53L1Base::CheckAndChangeDistanceMode(VL53L1_DEV Dev, VL53L1_TargetRangeData_t *pRangeData, int16_t Ambient100DmaxMm, VL53L1_DistanceModes *pNewDistanceMode)
 {
   VL53L1_DistanceModes DistanceMode;
   uint8_t RangeStatus = pRangeData->RangeStatus;
@@ -1884,7 +1884,7 @@ void VL53L1::CheckAndChangeDistanceMode(VL53L1_DEV Dev, VL53L1_TargetRangeData_t
   }
 }
 
-uint8_t VL53L1::ComputeRQL(uint8_t active_results, uint8_t FilteredRangeStatus, VL53L1_range_data_t *presults_data)
+uint8_t VL53L1Base::ComputeRQL(uint8_t active_results, uint8_t FilteredRangeStatus, VL53L1_range_data_t *presults_data)
 {
   int16_t T_Wide = 150;
   int16_t SRL = 300;
@@ -1934,7 +1934,7 @@ uint8_t VL53L1::ComputeRQL(uint8_t active_results, uint8_t FilteredRangeStatus, 
 }
 
 
-uint8_t VL53L1::ConvertStatusLite(uint8_t FilteredRangeStatus)
+uint8_t VL53L1Base::ConvertStatusLite(uint8_t FilteredRangeStatus)
 {
   uint8_t RangeStatus;
 
@@ -1974,7 +1974,7 @@ uint8_t VL53L1::ConvertStatusLite(uint8_t FilteredRangeStatus)
 }
 
 
-uint8_t VL53L1::ConvertStatusHisto(uint8_t FilteredRangeStatus)
+uint8_t VL53L1Base::ConvertStatusHisto(uint8_t FilteredRangeStatus)
 {
   uint8_t RangeStatus;
 
@@ -2010,7 +2010,7 @@ uint8_t VL53L1::ConvertStatusHisto(uint8_t FilteredRangeStatus)
   return RangeStatus;
 }
 
-VL53L1_Error VL53L1::SetSimpleData(VL53L1_DEV Dev, uint8_t active_results, uint8_t device_status, VL53L1_range_data_t *presults_data, VL53L1_RangingMeasurementData_t *pRangeData)
+VL53L1_Error VL53L1Base::SetSimpleData(VL53L1_DEV Dev, uint8_t active_results, uint8_t device_status, VL53L1_range_data_t *presults_data, VL53L1_RangingMeasurementData_t *pRangeData)
 {
   VL53L1_Error Status = VL53L1_ERROR_NONE;
   uint8_t FilteredRangeStatus;
@@ -2141,7 +2141,7 @@ VL53L1_Error VL53L1::SetSimpleData(VL53L1_DEV Dev, uint8_t active_results, uint8
   return Status;
 }
 
-VL53L1_Error VL53L1::SetTargetData(VL53L1_DEV Dev, uint8_t active_results, uint8_t device_status, VL53L1_range_data_t *presults_data, VL53L1_TargetRangeData_t *pRangeData)
+VL53L1_Error VL53L1Base::SetTargetData(VL53L1_DEV Dev, uint8_t active_results, uint8_t device_status, VL53L1_range_data_t *presults_data, VL53L1_TargetRangeData_t *pRangeData)
 {
   VL53L1_Error Status = VL53L1_ERROR_NONE;
   uint8_t FilteredRangeStatus;
@@ -2280,7 +2280,7 @@ VL53L1_Error VL53L1::SetTargetData(VL53L1_DEV Dev, uint8_t active_results, uint8
   return Status;
 }
 
-uint8_t VL53L1::GetOutputDataIndex(VL53L1_DEV Dev, VL53L1_range_results_t *presults)
+uint8_t VL53L1Base::GetOutputDataIndex(VL53L1_DEV Dev, VL53L1_range_results_t *presults)
 {
   uint8_t i;
   uint8_t index = 0;
@@ -2304,7 +2304,7 @@ uint8_t VL53L1::GetOutputDataIndex(VL53L1_DEV Dev, VL53L1_range_results_t *presu
   return index;
 }
 
-VL53L1_Error VL53L1::VL53L1_GetRangingMeasurementData(VL53L1_RangingMeasurementData_t *pRangingMeasurementData)
+VL53L1_Error VL53L1Base::VL53L1_GetRangingMeasurementData(VL53L1_RangingMeasurementData_t *pRangingMeasurementData)
 {
   VL53L1_Error Status = VL53L1_ERROR_NONE;
   VL53L1_LLDriverData_t *pdev =
@@ -2352,7 +2352,7 @@ VL53L1_Error VL53L1::VL53L1_GetRangingMeasurementData(VL53L1_RangingMeasurementD
   return Status;
 }
 
-VL53L1_Error VL53L1::SetMeasurementData(VL53L1_DEV Dev, VL53L1_range_results_t *presults, VL53L1_MultiRangingData_t *pMultiRangingData)
+VL53L1_Error VL53L1Base::SetMeasurementData(VL53L1_DEV Dev, VL53L1_range_results_t *presults, VL53L1_MultiRangingData_t *pMultiRangingData)
 {
   uint8_t i;
   uint8_t iteration;
@@ -2419,7 +2419,7 @@ VL53L1_Error VL53L1::SetMeasurementData(VL53L1_DEV Dev, VL53L1_range_results_t *
   return Status;
 }
 
-VL53L1_Error VL53L1::VL53L1_GetMultiRangingData(VL53L1_MultiRangingData_t *pMultiRangingData)
+VL53L1_Error VL53L1Base::VL53L1_GetMultiRangingData(VL53L1_MultiRangingData_t *pMultiRangingData)
 {
   VL53L1_Error Status = VL53L1_ERROR_NONE;
   VL53L1_LLDriverData_t *pdev =
@@ -2465,7 +2465,7 @@ VL53L1_Error VL53L1::VL53L1_GetMultiRangingData(VL53L1_MultiRangingData_t *pMult
   return Status;
 }
 
-VL53L1_Error VL53L1::VL53L1_GetAdditionalData(VL53L1_AdditionalData_t *pAdditionalData)
+VL53L1_Error VL53L1Base::VL53L1_GetAdditionalData(VL53L1_AdditionalData_t *pAdditionalData)
 {
   VL53L1_Error Status = VL53L1_ERROR_NONE;
 
@@ -2482,7 +2482,7 @@ VL53L1_Error VL53L1::VL53L1_GetAdditionalData(VL53L1_AdditionalData_t *pAddition
 
 
 
-VL53L1_Error VL53L1::VL53L1_SetTuningParameter(uint16_t TuningParameterId, int32_t TuningParameterValue)
+VL53L1_Error VL53L1Base::VL53L1_SetTuningParameter(uint16_t TuningParameterId, int32_t TuningParameterValue)
 {
   VL53L1_Error Status = VL53L1_ERROR_NONE;
 
@@ -2509,7 +2509,7 @@ VL53L1_Error VL53L1::VL53L1_SetTuningParameter(uint16_t TuningParameterId, int32
   return Status;
 }
 
-VL53L1_Error VL53L1::VL53L1_GetTuningParameter(uint16_t TuningParameterId, int32_t *pTuningParameterValue)
+VL53L1_Error VL53L1Base::VL53L1_GetTuningParameter(uint16_t TuningParameterId, int32_t *pTuningParameterValue)
 {
   VL53L1_Error Status = VL53L1_ERROR_NONE;
 
@@ -2532,7 +2532,7 @@ VL53L1_Error VL53L1::VL53L1_GetTuningParameter(uint16_t TuningParameterId, int32
 }
 
 
-VL53L1_Error VL53L1::VL53L1_PerformRefSpadManagement()
+VL53L1_Error VL53L1Base::VL53L1_PerformRefSpadManagement()
 {
 #ifdef VL53L1_NOCALIB
   VL53L1_Error Status = VL53L1_ERROR_NOT_SUPPORTED;
@@ -2610,7 +2610,7 @@ VL53L1_Error VL53L1::VL53L1_PerformRefSpadManagement()
   return Status;
 }
 
-VL53L1_Error VL53L1::VL53L1_SmudgeCorrectionEnable(VL53L1_SmudgeCorrectionModes Mode)
+VL53L1_Error VL53L1Base::VL53L1_SmudgeCorrectionEnable(VL53L1_SmudgeCorrectionModes Mode)
 {
   VL53L1_Error Status = VL53L1_ERROR_NONE;
   VL53L1_Error s1 = VL53L1_ERROR_NONE;
@@ -2659,7 +2659,7 @@ VL53L1_Error VL53L1::VL53L1_SmudgeCorrectionEnable(VL53L1_SmudgeCorrectionModes 
   return Status;
 }
 
-VL53L1_Error VL53L1::VL53L1_SetXTalkCompensationEnable(uint8_t XTalkCompensationEnable)
+VL53L1_Error VL53L1Base::VL53L1_SetXTalkCompensationEnable(uint8_t XTalkCompensationEnable)
 {
   VL53L1_Error Status = VL53L1_ERROR_NONE;
 
@@ -2676,7 +2676,7 @@ VL53L1_Error VL53L1::VL53L1_SetXTalkCompensationEnable(uint8_t XTalkCompensation
 }
 
 
-VL53L1_Error VL53L1::VL53L1_GetXTalkCompensationEnable(uint8_t *pXTalkCompensationEnable)
+VL53L1_Error VL53L1Base::VL53L1_GetXTalkCompensationEnable(uint8_t *pXTalkCompensationEnable)
 {
   VL53L1_Error Status = VL53L1_ERROR_NONE;
 
@@ -2691,7 +2691,7 @@ VL53L1_Error VL53L1::VL53L1_GetXTalkCompensationEnable(uint8_t *pXTalkCompensati
 }
 
 
-VL53L1_Error VL53L1::VL53L1_PerformXTalkCalibration(uint8_t CalibrationOption)
+VL53L1_Error VL53L1Base::VL53L1_PerformXTalkCalibration(uint8_t CalibrationOption)
 {
   VL53L1_Error Status = VL53L1_ERROR_NONE;
   VL53L1_Error UStatus;
@@ -2784,7 +2784,7 @@ VL53L1_Error VL53L1::VL53L1_PerformXTalkCalibration(uint8_t CalibrationOption)
   return Status;
 }
 
-VL53L1_Error VL53L1::VL53L1_SetOffsetCalibrationMode(VL53L1_OffsetCalibrationModes OffsetCalibrationMode)
+VL53L1_Error VL53L1Base::VL53L1_SetOffsetCalibrationMode(VL53L1_OffsetCalibrationModes OffsetCalibrationMode)
 {
   VL53L1_Error Status = VL53L1_ERROR_NONE;
   VL53L1_OffsetCalibrationMode   offset_cal_mode;
@@ -2814,7 +2814,7 @@ VL53L1_Error VL53L1::VL53L1_SetOffsetCalibrationMode(VL53L1_OffsetCalibrationMod
   return Status;
 }
 
-VL53L1_Error VL53L1::VL53L1_SetOffsetCorrectionMode(VL53L1_OffsetCorrectionModes OffsetCorrectionMode)
+VL53L1_Error VL53L1Base::VL53L1_SetOffsetCorrectionMode(VL53L1_OffsetCorrectionModes OffsetCorrectionMode)
 {
   VL53L1_Error Status = VL53L1_ERROR_NONE;
   VL53L1_OffsetCorrectionMode   offset_cor_mode;
@@ -2844,7 +2844,7 @@ VL53L1_Error VL53L1::VL53L1_SetOffsetCorrectionMode(VL53L1_OffsetCorrectionModes
   return Status;
 }
 
-VL53L1_Error VL53L1::VL53L1_PerformOffsetCalibration(int32_t CalDistanceMilliMeter, FixPoint1616_t CalReflectancePercent)
+VL53L1_Error VL53L1Base::VL53L1_PerformOffsetCalibration(int32_t CalDistanceMilliMeter, FixPoint1616_t CalReflectancePercent)
 {
   VL53L1_Error Status = VL53L1_ERROR_NONE;
   VL53L1_Error UnfilteredStatus;
@@ -2906,7 +2906,7 @@ VL53L1_Error VL53L1::VL53L1_PerformOffsetCalibration(int32_t CalDistanceMilliMet
   return Status;
 }
 
-VL53L1_Error VL53L1::VL53L1_PerformOffsetSimpleCalibration(int32_t CalDistanceMilliMeter)
+VL53L1_Error VL53L1Base::VL53L1_PerformOffsetSimpleCalibration(int32_t CalDistanceMilliMeter)
 {
   VL53L1_Error Status = VL53L1_ERROR_NONE;
   int32_t sum_ranging;
@@ -3007,7 +3007,7 @@ VL53L1_Error VL53L1::VL53L1_PerformOffsetSimpleCalibration(int32_t CalDistanceMi
   return Status;
 }
 
-VL53L1_Error VL53L1::VL53L1_PerformOffsetZeroDistanceCalibration()
+VL53L1_Error VL53L1Base::VL53L1_PerformOffsetZeroDistanceCalibration()
 {
 #define START_OFFSET 50
   VL53L1_Error Status = VL53L1_ERROR_NONE;
@@ -3099,7 +3099,7 @@ VL53L1_Error VL53L1::VL53L1_PerformOffsetZeroDistanceCalibration()
   return Status;
 }
 
-VL53L1_Error VL53L1::VL53L1_SetCalibrationData(VL53L1_CalibrationData_t *pCalibrationData)
+VL53L1_Error VL53L1Base::VL53L1_SetCalibrationData(VL53L1_CalibrationData_t *pCalibrationData)
 {
   VL53L1_Error Status = VL53L1_ERROR_NONE;
   VL53L1_CustomerNvmManaged_t          *pC;
@@ -3230,7 +3230,7 @@ ENDFUNC:
 
 }
 
-VL53L1_Error VL53L1::VL53L1_GetCalibrationData(VL53L1_CalibrationData_t  *pCalibrationData)
+VL53L1_Error VL53L1Base::VL53L1_GetCalibrationData(VL53L1_CalibrationData_t  *pCalibrationData)
 {
   VL53L1_Error Status = VL53L1_ERROR_NONE;
   VL53L1_calibration_data_t      cal_data;
@@ -3362,7 +3362,7 @@ ENDFUNC:
 }
 
 
-VL53L1_Error VL53L1::VL53L1_SetZoneCalibrationData(VL53L1_ZoneCalibrationData_t *pZoneCalibrationData)
+VL53L1_Error VL53L1Base::VL53L1_SetZoneCalibrationData(VL53L1_ZoneCalibrationData_t *pZoneCalibrationData)
 {
   VL53L1_Error Status = VL53L1_ERROR_NONE;
 
@@ -3375,7 +3375,7 @@ VL53L1_Error VL53L1::VL53L1_SetZoneCalibrationData(VL53L1_ZoneCalibrationData_t 
 
 }
 
-VL53L1_Error VL53L1::VL53L1_GetZoneCalibrationData(VL53L1_ZoneCalibrationData_t  *pZoneCalibrationData)
+VL53L1_Error VL53L1Base::VL53L1_GetZoneCalibrationData(VL53L1_ZoneCalibrationData_t  *pZoneCalibrationData)
 {
   VL53L1_Error Status = VL53L1_ERROR_NONE;
 
@@ -3387,7 +3387,7 @@ VL53L1_Error VL53L1::VL53L1_GetZoneCalibrationData(VL53L1_ZoneCalibrationData_t 
   return Status;
 }
 
-VL53L1_Error VL53L1::VL53L1_GetOpticalCenter(FixPoint1616_t *pOpticalCenterX, FixPoint1616_t *pOpticalCenterY)
+VL53L1_Error VL53L1Base::VL53L1_GetOpticalCenter(FixPoint1616_t *pOpticalCenterX, FixPoint1616_t *pOpticalCenterY)
 {
   VL53L1_Error Status = VL53L1_ERROR_NONE;
   VL53L1_calibration_data_t  CalibrationData;
@@ -3413,7 +3413,7 @@ VL53L1_Error VL53L1::VL53L1_GetOpticalCenter(FixPoint1616_t *pOpticalCenterX, Fi
 
 
 
-VL53L1_Error VL53L1::VL53L1_SetThresholdConfig(VL53L1_DetectionConfig_t *pConfig)
+VL53L1_Error VL53L1Base::VL53L1_SetThresholdConfig(VL53L1_DetectionConfig_t *pConfig)
 {
 #define BADTHRESBOUNDS(T) \
   (((T.CrossMode == VL53L1_THRESHOLD_OUT_OF_WINDOW) || \
@@ -3516,7 +3516,7 @@ VL53L1_Error VL53L1::VL53L1_SetThresholdConfig(VL53L1_DetectionConfig_t *pConfig
 }
 
 
-VL53L1_Error VL53L1::VL53L1_GetThresholdConfig(VL53L1_DetectionConfig_t *pConfig)
+VL53L1_Error VL53L1Base::VL53L1_GetThresholdConfig(VL53L1_DetectionConfig_t *pConfig)
 {
   VL53L1_Error Status = VL53L1_ERROR_NONE;
   VL53L1_GPIO_interrupt_config_t Cfg;
@@ -3575,7 +3575,7 @@ VL53L1_Error VL53L1::VL53L1_GetThresholdConfig(VL53L1_DetectionConfig_t *pConfig
 
 
 
-VL53L1_Error VL53L1::VL53L1_PerformOffsetPerVcselCalibration(int32_t CalDistanceMilliMeter)
+VL53L1_Error VL53L1Base::VL53L1_PerformOffsetPerVcselCalibration(int32_t CalDistanceMilliMeter)
 {
   VL53L1_Error Status = VL53L1_ERROR_NONE;
   int32_t sum_ranging_range_A, sum_ranging_range_B;
@@ -3719,7 +3719,7 @@ VL53L1_Error VL53L1::VL53L1_PerformOffsetPerVcselCalibration(int32_t CalDistance
   return Status;
 }
 
-VL53L1_Error VL53L1::VL53L1_WrByte(VL53L1_DEV Dev, uint16_t index, uint8_t data)
+VL53L1_Error VL53L1Base::VL53L1_WrByte(VL53L1_DEV Dev, uint16_t index, uint8_t data)
 {
   int  status;
 
@@ -3727,7 +3727,7 @@ VL53L1_Error VL53L1::VL53L1_WrByte(VL53L1_DEV Dev, uint16_t index, uint8_t data)
   return status;
 }
 
-VL53L1_Error VL53L1::VL53L1_WrWord(VL53L1_DEV Dev, uint16_t index, uint16_t data)
+VL53L1_Error VL53L1Base::VL53L1_WrWord(VL53L1_DEV Dev, uint16_t index, uint16_t data)
 {
   int  status;
   uint8_t buffer[2];
@@ -3738,7 +3738,7 @@ VL53L1_Error VL53L1::VL53L1_WrWord(VL53L1_DEV Dev, uint16_t index, uint16_t data
   return status;
 }
 
-VL53L1_Error VL53L1::VL53L1_WrDWord(VL53L1_DEV Dev, uint16_t index, uint32_t data)
+VL53L1_Error VL53L1Base::VL53L1_WrDWord(VL53L1_DEV Dev, uint16_t index, uint32_t data)
 {
   int  status;
   uint8_t buffer[4];
@@ -3751,7 +3751,7 @@ VL53L1_Error VL53L1::VL53L1_WrDWord(VL53L1_DEV Dev, uint16_t index, uint32_t dat
   return status;
 }
 
-VL53L1_Error VL53L1::VL53L1_RdByte(VL53L1_DEV Dev, uint16_t index, uint8_t *data)
+VL53L1_Error VL53L1Base::VL53L1_RdByte(VL53L1_DEV Dev, uint16_t index, uint8_t *data)
 {
   int  status;
 
@@ -3764,7 +3764,7 @@ VL53L1_Error VL53L1::VL53L1_RdByte(VL53L1_DEV Dev, uint16_t index, uint8_t *data
   return 0;
 }
 
-VL53L1_Error VL53L1::VL53L1_RdWord(VL53L1_DEV Dev, uint16_t index, uint16_t *data)
+VL53L1_Error VL53L1Base::VL53L1_RdWord(VL53L1_DEV Dev, uint16_t index, uint16_t *data)
 {
   int  status;
   uint8_t buffer[2] = {0, 0};
@@ -3776,7 +3776,7 @@ VL53L1_Error VL53L1::VL53L1_RdWord(VL53L1_DEV Dev, uint16_t index, uint16_t *dat
   return status;
 }
 
-VL53L1_Error VL53L1::VL53L1_RdDWord(VL53L1_DEV Dev, uint16_t index, uint32_t *data)
+VL53L1_Error VL53L1Base::VL53L1_RdDWord(VL53L1_DEV Dev, uint16_t index, uint32_t *data)
 {
   int status;
   uint8_t buffer[4] = {0, 0, 0, 0};
@@ -3788,7 +3788,7 @@ VL53L1_Error VL53L1::VL53L1_RdDWord(VL53L1_DEV Dev, uint16_t index, uint32_t *da
   return status;
 }
 
-VL53L1_Error VL53L1::VL53L1_UpdateByte(VL53L1_DEV Dev, uint16_t index, uint8_t AndData, uint8_t OrData)
+VL53L1_Error VL53L1Base::VL53L1_UpdateByte(VL53L1_DEV Dev, uint16_t index, uint8_t AndData, uint8_t OrData)
 {
   int  status;
   uint8_t buffer = 0;
@@ -3802,7 +3802,7 @@ VL53L1_Error VL53L1::VL53L1_UpdateByte(VL53L1_DEV Dev, uint16_t index, uint8_t A
   return status;
 }
 
-VL53L1_Error VL53L1::VL53L1_WriteMulti(VL53L1_DEV Dev, uint16_t index, uint8_t *pdata, uint32_t count)
+VL53L1_Error VL53L1Base::VL53L1_WriteMulti(VL53L1_DEV Dev, uint16_t index, uint8_t *pdata, uint32_t count)
 {
   int  status;
 
@@ -3810,7 +3810,7 @@ VL53L1_Error VL53L1::VL53L1_WriteMulti(VL53L1_DEV Dev, uint16_t index, uint8_t *
   return status;
 }
 
-VL53L1_Error VL53L1::VL53L1_ReadMulti(VL53L1_DEV Dev, uint16_t index, uint8_t *pdata, uint32_t count)
+VL53L1_Error VL53L1Base::VL53L1_ReadMulti(VL53L1_DEV Dev, uint16_t index, uint8_t *pdata, uint32_t count)
 {
   int status;
 
@@ -3819,7 +3819,7 @@ VL53L1_Error VL53L1::VL53L1_ReadMulti(VL53L1_DEV Dev, uint16_t index, uint8_t *p
   return status;
 }
 
-VL53L1_Error VL53L1::VL53L1_I2CWrite(uint8_t DeviceAddr, uint16_t RegisterAddr, uint8_t *pBuffer, uint16_t NumByteToWrite)
+VL53L1_Error VL53L1Base::VL53L1_I2CWrite(uint8_t DeviceAddr, uint16_t RegisterAddr, uint8_t *pBuffer, uint16_t NumByteToWrite)
 {
 #ifdef DEBUG_MODE
   Serial.print("Beginning transmission to ");
@@ -3840,7 +3840,7 @@ VL53L1_Error VL53L1::VL53L1_I2CWrite(uint8_t DeviceAddr, uint16_t RegisterAddr, 
   return 0;
 }
 
-VL53L1_Error VL53L1::VL53L1_I2CRead(uint8_t DeviceAddr, uint16_t RegisterAddr, uint8_t *pBuffer, uint16_t NumByteToRead)
+VL53L1_Error VL53L1Base::VL53L1_I2CRead(uint8_t DeviceAddr, uint16_t RegisterAddr, uint8_t *pBuffer, uint16_t NumByteToRead)
 {
   int status = 0;
   //Loop until the port is transmitted correctly
@@ -3879,7 +3879,7 @@ VL53L1_Error VL53L1::VL53L1_I2CRead(uint8_t DeviceAddr, uint16_t RegisterAddr, u
   return 0;
 }
 
-VL53L1_Error VL53L1::VL53L1_GetTickCount(uint32_t *ptick_count_ms)
+VL53L1_Error VL53L1Base::VL53L1_GetTickCount(uint32_t *ptick_count_ms)
 {
   /* Returns current tick count in [ms] */
 
@@ -3891,21 +3891,21 @@ VL53L1_Error VL53L1::VL53L1_GetTickCount(uint32_t *ptick_count_ms)
   return status;
 }
 
-VL53L1_Error VL53L1::VL53L1_WaitUs(VL53L1_Dev_t *pdev, int32_t wait_us)
+VL53L1_Error VL53L1Base::VL53L1_WaitUs(VL53L1_Dev_t *pdev, int32_t wait_us)
 {
   (void)pdev;
   delay(wait_us / 1000);
   return VL53L1_ERROR_NONE;
 }
 
-VL53L1_Error VL53L1::VL53L1_WaitMs(VL53L1_Dev_t *pdev, int32_t wait_ms)
+VL53L1_Error VL53L1Base::VL53L1_WaitMs(VL53L1_Dev_t *pdev, int32_t wait_ms)
 {
   (void)pdev;
   delay(wait_ms);
   return VL53L1_ERROR_NONE;
 }
 
-VL53L1_Error VL53L1::VL53L1_WaitValueMaskEx(VL53L1_Dev_t *pdev, uint32_t timeout_ms, uint16_t index, uint8_t value, uint8_t mask, uint32_t poll_delay_ms)
+VL53L1_Error VL53L1Base::VL53L1_WaitValueMaskEx(VL53L1_Dev_t *pdev, uint32_t timeout_ms, uint16_t index, uint8_t value, uint8_t mask, uint32_t poll_delay_ms)
 {
   /*
    * Platform implementation of WaitValueMaskEx V2WReg script command

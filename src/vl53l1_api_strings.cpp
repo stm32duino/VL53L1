@@ -65,7 +65,7 @@
 #include "vl53l1_class.h"
 
 
-VL53L1_Error VL53L1::VL53L1_get_range_status_string(
+VL53L1_Error VL53L1Base::VL53L1_get_range_status_string(
   uint8_t   RangeStatus,
   char    *pRangeStatusString)
 {
@@ -113,7 +113,7 @@ VL53L1_Error VL53L1::VL53L1_get_range_status_string(
 }
 
 
-VL53L1_Error VL53L1::VL53L1_get_pal_state_string(
+VL53L1_Error VL53L1Base::VL53L1_get_pal_state_string(
   VL53L1_State PalStateCode,
   char *pPalStateString)
 {
@@ -168,7 +168,7 @@ VL53L1_Error VL53L1::VL53L1_get_pal_state_string(
   return status;
 }
 
-VL53L1_Error VL53L1::VL53L1_get_sequence_steps_info(
+VL53L1_Error VL53L1Base::VL53L1_get_sequence_steps_info(
   VL53L1_SequenceStepId SequenceStepId,
   char *pSequenceStepsString)
 {
@@ -221,7 +221,7 @@ VL53L1_Error VL53L1::VL53L1_get_sequence_steps_info(
   return Status;
 }
 
-VL53L1_Error VL53L1::VL53L1_get_limit_check_info(uint16_t LimitCheckId,
+VL53L1_Error VL53L1Base::VL53L1_get_limit_check_info(uint16_t LimitCheckId,
                                                  char *pLimitCheckString)
 {
   VL53L1_Error Status = VL53L1_ERROR_NONE;

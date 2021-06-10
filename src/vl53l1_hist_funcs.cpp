@@ -22,7 +22,7 @@
 #include "vl53l1_class.h"
 
 
-VL53L1_Error VL53L1::VL53L1_hist_process_data(
+VL53L1_Error VL53L1Base::VL53L1_hist_process_data(
   VL53L1_dmax_calibration_data_t     *pdmax_cal,
   VL53L1_hist_gen3_dmax_config_t     *pdmax_cfg,
   VL53L1_hist_post_process_config_t  *ppost_cfg,
@@ -223,7 +223,7 @@ VL53L1_Error VL53L1::VL53L1_hist_process_data(
 }
 
 
-VL53L1_Error VL53L1::VL53L1_hist_ambient_dmax(
+VL53L1_Error VL53L1Base::VL53L1_hist_ambient_dmax(
   uint16_t                            target_reflectance,
   VL53L1_dmax_calibration_data_t     *pdmax_cal,
   VL53L1_hist_gen3_dmax_config_t     *pdmax_cfg,

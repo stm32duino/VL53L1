@@ -67,7 +67,7 @@
 
 #include "vl53l1_class.h"
 
-VL53L1_Error VL53L1::VL53L1_get_pal_error_string(
+VL53L1_Error VL53L1Base::VL53L1_get_pal_error_string(
   VL53L1_Error   PalErrorCode,
   char          *pPalErrorString)
 {

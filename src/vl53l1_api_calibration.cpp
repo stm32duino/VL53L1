@@ -69,7 +69,7 @@
 #include "vl53l1_class.h"
 
 
-VL53L1_Error VL53L1::VL53L1_run_ref_spad_char(
+VL53L1_Error VL53L1Base::VL53L1_run_ref_spad_char(
   VL53L1_DEV        Dev,
   VL53L1_Error     *pcal_status)
 {
@@ -225,7 +225,7 @@ VL53L1_Error VL53L1::VL53L1_run_ref_spad_char(
 }
 
 
-VL53L1_Error VL53L1::VL53L1_run_xtalk_extraction(
+VL53L1_Error VL53L1Base::VL53L1_run_xtalk_extraction(
   VL53L1_DEV                          Dev,
   VL53L1_Error                       *pcal_status)
 {
@@ -489,7 +489,7 @@ VL53L1_Error VL53L1::VL53L1_run_xtalk_extraction(
 
 
 
-VL53L1_Error VL53L1::VL53L1_get_and_avg_xtalk_samples(
+VL53L1_Error VL53L1Base::VL53L1_get_and_avg_xtalk_samples(
   VL53L1_DEV                    Dev,
   uint8_t                       num_of_samples,
   uint8_t                       measurement_mode,
@@ -748,7 +748,7 @@ VL53L1_Error VL53L1::VL53L1_get_and_avg_xtalk_samples(
 
 
 
-VL53L1_Error VL53L1::VL53L1_run_offset_calibration(
+VL53L1_Error VL53L1Base::VL53L1_run_offset_calibration(
   VL53L1_DEV                    Dev,
   int16_t                       cal_distance_mm,
   uint16_t                      cal_reflectance_pc,
@@ -1136,7 +1136,7 @@ VL53L1_Error VL53L1::VL53L1_run_offset_calibration(
 }
 
 
-VL53L1_Error VL53L1::VL53L1_run_phasecal_average(
+VL53L1_Error VL53L1Base::VL53L1_run_phasecal_average(
   VL53L1_DEV              Dev,
   uint8_t                 measurement_mode,
   uint8_t                 phasecal_result__vcsel_start,
@@ -1268,7 +1268,7 @@ VL53L1_Error VL53L1::VL53L1_run_phasecal_average(
 }
 
 
-VL53L1_Error VL53L1::VL53L1_run_zone_calibration(
+VL53L1_Error VL53L1Base::VL53L1_run_zone_calibration(
   VL53L1_DEV                    Dev,
   VL53L1_DevicePresetModes      device_preset_mode,
   VL53L1_DeviceZonePreset       zone_preset,
@@ -1589,7 +1589,7 @@ VL53L1_Error VL53L1::VL53L1_run_zone_calibration(
 }
 
 
-VL53L1_Error VL53L1::VL53L1_run_spad_rate_map(
+VL53L1_Error VL53L1Base::VL53L1_run_spad_rate_map(
   VL53L1_DEV                 Dev,
   VL53L1_DeviceTestMode      device_test_mode,
   VL53L1_DeviceSscArray      array_select,
@@ -1657,7 +1657,7 @@ VL53L1_Error VL53L1::VL53L1_run_spad_rate_map(
 }
 
 
-VL53L1_Error VL53L1::VL53L1_run_device_test(
+VL53L1_Error VL53L1Base::VL53L1_run_device_test(
   VL53L1_DEV             Dev,
   VL53L1_DeviceTestMode  device_test_mode)
 {
@@ -1734,7 +1734,7 @@ VL53L1_Error VL53L1::VL53L1_run_device_test(
 }
 
 
-void VL53L1::VL53L1_hist_xtalk_extract_data_init(
+void VL53L1Base::VL53L1_hist_xtalk_extract_data_init(
   VL53L1_hist_xtalk_extract_data_t *pxtalk_data)
 {
 
@@ -1762,7 +1762,7 @@ void VL53L1::VL53L1_hist_xtalk_extract_data_init(
 }
 
 
-VL53L1_Error VL53L1::VL53L1_hist_xtalk_extract_update(
+VL53L1_Error VL53L1Base::VL53L1_hist_xtalk_extract_update(
   int16_t                             target_distance_mm,
   uint16_t                            target_width_oversize,
   VL53L1_histogram_bin_data_t        *phist_bins,
@@ -1794,7 +1794,7 @@ VL53L1_Error VL53L1::VL53L1_hist_xtalk_extract_update(
 }
 
 
-VL53L1_Error VL53L1::VL53L1_hist_xtalk_extract_fini(
+VL53L1_Error VL53L1Base::VL53L1_hist_xtalk_extract_fini(
   VL53L1_histogram_bin_data_t        *phist_bins,
   VL53L1_hist_xtalk_extract_data_t   *pxtalk_data,
   VL53L1_xtalk_calibration_results_t *pxtalk_cal,
@@ -1872,7 +1872,7 @@ VL53L1_Error VL53L1::VL53L1_hist_xtalk_extract_fini(
 }
 
 
-VL53L1_Error   VL53L1::VL53L1_run_hist_xtalk_extraction(
+VL53L1_Error   VL53L1Base::VL53L1_run_hist_xtalk_extraction(
   VL53L1_DEV                          Dev,
   int16_t                             cal_distance_mm,
   VL53L1_Error                       *pcal_status)

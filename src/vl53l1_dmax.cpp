@@ -19,7 +19,7 @@
 #include "vl53l1_class.h"
 
 
-VL53L1_Error VL53L1::VL53L1_f_001(
+VL53L1_Error VL53L1Base::VL53L1_f_001(
   uint16_t                              target_reflectance,
   VL53L1_dmax_calibration_data_t       *pcal,
   VL53L1_hist_gen3_dmax_config_t       *pcfg,
@@ -230,7 +230,7 @@ VL53L1_Error VL53L1::VL53L1_f_001(
 }
 
 
-uint32_t VL53L1::VL53L1_f_002(
+uint32_t VL53L1Base::VL53L1_f_002(
   uint32_t     events_threshold,
   uint32_t     ref_signal_events,
   uint32_t   ref_distance_mm,

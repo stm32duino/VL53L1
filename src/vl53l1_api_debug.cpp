@@ -68,7 +68,7 @@
 #include "vl53l1_class.h"
 
 
-VL53L1_Error VL53L1::VL53L1_decode_calibration_data_buffer(
+VL53L1_Error VL53L1Base::VL53L1_decode_calibration_data_buffer(
   uint16_t                   buf_size,
   uint8_t                   *pbuffer,
   VL53L1_calibration_data_t *pdata)
@@ -89,7 +89,7 @@ VL53L1_Error VL53L1::VL53L1_decode_calibration_data_buffer(
 }
 
 
-VL53L1_Error VL53L1::VL53L1_get_nvm_debug_data(
+VL53L1_Error VL53L1Base::VL53L1_get_nvm_debug_data(
   VL53L1_DEV                          Dev,
   VL53L1_decoded_nvm_data_t          *pdata)
 {
@@ -107,7 +107,7 @@ VL53L1_Error VL53L1::VL53L1_get_nvm_debug_data(
 }
 
 
-VL53L1_Error VL53L1::VL53L1_get_histogram_debug_data(
+VL53L1_Error VL53L1Base::VL53L1_get_histogram_debug_data(
   VL53L1_DEV                          Dev,
   VL53L1_histogram_bin_data_t        *pdata)
 {
@@ -133,7 +133,7 @@ VL53L1_Error VL53L1::VL53L1_get_histogram_debug_data(
 
 
 
-VL53L1_Error VL53L1::VL53L1_get_additional_data(
+VL53L1_Error VL53L1Base::VL53L1_get_additional_data(
   VL53L1_DEV                       Dev,
   VL53L1_additional_data_t        *pdata)
 {
@@ -176,7 +176,7 @@ VL53L1_Error VL53L1::VL53L1_get_additional_data(
 
 
 
-VL53L1_Error VL53L1::VL53L1_get_xtalk_debug_data(
+VL53L1_Error VL53L1Base::VL53L1_get_xtalk_debug_data(
   VL53L1_DEV                          Dev,
   VL53L1_xtalk_debug_data_t          *pdata)
 {
@@ -220,7 +220,7 @@ VL53L1_Error VL53L1::VL53L1_get_xtalk_debug_data(
 }
 
 
-VL53L1_Error VL53L1::VL53L1_get_offset_debug_data(
+VL53L1_Error VL53L1Base::VL53L1_get_offset_debug_data(
   VL53L1_DEV                          Dev,
   VL53L1_offset_debug_data_t         *pdata)
 {

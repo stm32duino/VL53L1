@@ -17,7 +17,7 @@
 #include "vl53l1_class.h"
 
 
-void VL53L1::VL53L1_f_032(
+void VL53L1Base::VL53L1_f_032(
   VL53L1_hist_gen4_algo_filtered_data_t   *palgo)
 {
 
@@ -39,7 +39,7 @@ void VL53L1::VL53L1_f_032(
 }
 
 
-VL53L1_Error VL53L1::VL53L1_f_033(
+VL53L1_Error VL53L1Base::VL53L1_f_033(
   VL53L1_dmax_calibration_data_t         *pdmax_cal,
   VL53L1_hist_gen3_dmax_config_t         *pdmax_cfg,
   VL53L1_hist_post_process_config_t      *ppost_cfg,
@@ -329,7 +329,7 @@ VL53L1_Error VL53L1::VL53L1_f_033(
 
 
 
-VL53L1_Error VL53L1::VL53L1_f_034(
+VL53L1_Error VL53L1Base::VL53L1_f_034(
   uint8_t                                pulse_no,
   VL53L1_histogram_bin_data_t           *ppulse,
   VL53L1_hist_gen3_algo_private_data_t  *palgo3,
@@ -392,7 +392,7 @@ VL53L1_Error VL53L1::VL53L1_f_034(
 }
 
 
-VL53L1_Error VL53L1::VL53L1_f_035(
+VL53L1_Error VL53L1Base::VL53L1_f_035(
   uint8_t                                pulse_no,
   uint16_t                               noise_threshold,
   VL53L1_hist_gen4_algo_filtered_data_t *pfiltered,
@@ -474,7 +474,7 @@ VL53L1_Error VL53L1::VL53L1_f_035(
 }
 
 
-VL53L1_Error VL53L1::VL53L1_f_036(
+VL53L1_Error VL53L1Base::VL53L1_f_036(
   uint8_t   bin,
   int32_t   VL53L1_p_003,
   int32_t   VL53L1_p_018,

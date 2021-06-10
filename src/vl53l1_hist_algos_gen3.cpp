@@ -19,7 +19,7 @@
 #include "vl53l1_class.h"
 
 
-void VL53L1::VL53L1_f_016(
+void VL53L1Base::VL53L1_f_016(
   VL53L1_hist_gen3_algo_private_data_t   *palgo)
 {
 
@@ -71,7 +71,7 @@ void VL53L1::VL53L1_f_016(
 
 
 
-VL53L1_Error VL53L1::VL53L1_f_018(
+VL53L1_Error VL53L1Base::VL53L1_f_018(
   uint16_t                          ambient_threshold_events_scaler,
   int32_t                           ambient_threshold_sigma,
   int32_t                           min_ambient_threshold_events,
@@ -175,7 +175,7 @@ VL53L1_Error VL53L1::VL53L1_f_018(
 
 
 
-VL53L1_Error VL53L1::VL53L1_f_019(
+VL53L1_Error VL53L1Base::VL53L1_f_019(
   VL53L1_hist_gen3_algo_private_data_t  *palgo)
 {
 
@@ -213,7 +213,7 @@ VL53L1_Error VL53L1::VL53L1_f_019(
 }
 
 
-VL53L1_Error VL53L1::VL53L1_f_020(
+VL53L1_Error VL53L1Base::VL53L1_f_020(
   VL53L1_hist_gen3_algo_private_data_t  *palgo)
 {
 
@@ -266,7 +266,7 @@ VL53L1_Error VL53L1::VL53L1_f_020(
 }
 
 
-VL53L1_Error VL53L1::VL53L1_f_021(
+VL53L1_Error VL53L1Base::VL53L1_f_021(
   VL53L1_hist_gen3_algo_private_data_t  *palgo)
 {
 
@@ -359,7 +359,7 @@ VL53L1_Error VL53L1::VL53L1_f_021(
 }
 
 
-VL53L1_Error VL53L1::VL53L1_f_028(
+VL53L1_Error VL53L1Base::VL53L1_f_028(
   VL53L1_HistTargetOrder                target_order,
   VL53L1_hist_gen3_algo_private_data_t  *palgo)
 {
@@ -439,7 +439,7 @@ ENDFUNC:
 }
 
 
-VL53L1_Error VL53L1::VL53L1_f_022(
+VL53L1_Error VL53L1Base::VL53L1_f_022(
   uint8_t                                pulse_no,
   VL53L1_histogram_bin_data_t           *pbins,
   VL53L1_hist_gen3_algo_private_data_t  *palgo)
@@ -477,7 +477,7 @@ VL53L1_Error VL53L1::VL53L1_f_022(
 }
 
 
-VL53L1_Error VL53L1::VL53L1_f_027(
+VL53L1_Error VL53L1Base::VL53L1_f_027(
   uint8_t                                pulse_no,
   uint8_t                                clip_events,
   VL53L1_histogram_bin_data_t           *pbins,
@@ -558,7 +558,7 @@ VL53L1_Error VL53L1::VL53L1_f_027(
 }
 
 
-VL53L1_Error VL53L1::VL53L1_f_030(
+VL53L1_Error VL53L1Base::VL53L1_f_030(
   int16_t                            VL53L1_p_022,
   int16_t                            VL53L1_p_026,
   uint8_t                            VL53L1_p_031,
@@ -623,7 +623,7 @@ VL53L1_Error VL53L1::VL53L1_f_030(
 }
 
 
-VL53L1_Error VL53L1::VL53L1_f_023(
+VL53L1_Error VL53L1Base::VL53L1_f_023(
   uint8_t                                pulse_no,
   VL53L1_histogram_bin_data_t           *pbins,
   VL53L1_hist_gen3_algo_private_data_t  *palgo,
@@ -667,7 +667,7 @@ VL53L1_Error VL53L1::VL53L1_f_023(
 }
 
 
-VL53L1_Error VL53L1::VL53L1_f_026(
+VL53L1_Error VL53L1Base::VL53L1_f_026(
   uint8_t                       bin,
   uint8_t                       sigma_estimator__sigma_ref_mm,
   uint8_t                       VL53L1_p_031,
@@ -759,7 +759,7 @@ VL53L1_Error VL53L1::VL53L1_f_026(
 }
 
 
-void VL53L1::VL53L1_f_029(
+void VL53L1Base::VL53L1_f_029(
   uint8_t                      range_id,
   uint8_t                      valid_phase_low,
   uint8_t                      valid_phase_high,

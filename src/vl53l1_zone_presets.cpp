@@ -68,7 +68,7 @@
 #include "vl53l1_class.h"
 
 
-VL53L1_Error VL53L1::VL53L1_init_zone_config_structure(
+VL53L1_Error VL53L1Base::VL53L1_init_zone_config_structure(
   uint8_t x_off,
   uint8_t x_inc,
   uint8_t x_zones,
@@ -117,7 +117,7 @@ VL53L1_Error VL53L1::VL53L1_init_zone_config_structure(
 }
 
 
-VL53L1_Error VL53L1::VL53L1_zone_preset_xtalk_planar(
+VL53L1_Error VL53L1Base::VL53L1_zone_preset_xtalk_planar(
   VL53L1_general_config_t *pgeneral,
   VL53L1_zone_config_t    *pzone_cfg)
 {
@@ -166,7 +166,7 @@ VL53L1_Error VL53L1::VL53L1_zone_preset_xtalk_planar(
 }
 
 
-VL53L1_Error VL53L1::VL53L1_init_zone_config_histogram_bins(
+VL53L1_Error VL53L1Base::VL53L1_init_zone_config_histogram_bins(
   VL53L1_zone_config_t   *pdata)
 {
 

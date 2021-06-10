@@ -19,7 +19,7 @@
 #include "vl53l1_class.h"
 
 
-uint16_t  VL53L1::VL53L1_f_042(
+uint16_t  VL53L1Base::VL53L1_f_042(
   uint8_t  sigma_estimator__effective_pulse_width_ns,
   uint8_t  sigma_estimator__effective_ambient_width_ns,
   uint8_t  sigma_estimator__sigma_ref_mm,
@@ -101,7 +101,7 @@ uint16_t  VL53L1::VL53L1_f_042(
 }
 
 
-uint16_t VL53L1::VL53L1_f_044(
+uint16_t VL53L1Base::VL53L1_f_044(
   uint8_t  sigma_estimator__effective_pulse_width_ns,
   uint8_t  sigma_estimator__effective_ambient_width_ns,
   uint8_t  sigma_estimator__sigma_ref_mm,
@@ -169,7 +169,7 @@ uint16_t VL53L1::VL53L1_f_044(
 
 
 
-VL53L1_Error VL53L1::VL53L1_f_045(
+VL53L1_Error VL53L1Base::VL53L1_f_045(
   uint8_t  sigma_estimator__sigma_ref_mm,
   uint32_t VL53L1_p_003,
   uint32_t VL53L1_p_018,
@@ -293,7 +293,7 @@ VL53L1_Error VL53L1::VL53L1_f_045(
 
 
 
-VL53L1_Error VL53L1::VL53L1_f_014(
+VL53L1_Error VL53L1Base::VL53L1_f_014(
   uint8_t  sigma_estimator__sigma_ref_mm,
   uint32_t VL53L1_p_003,
   uint32_t VL53L1_p_018,
@@ -465,7 +465,7 @@ VL53L1_Error VL53L1::VL53L1_f_014(
   return status;
 }
 
-uint32_t VL53L1::VL53L1_f_046(
+uint32_t VL53L1Base::VL53L1_f_046(
   uint64_t VL53L1_p_003,
   uint32_t size
 )
@@ -507,7 +507,7 @@ uint32_t VL53L1::VL53L1_f_046(
 
 
 
-uint32_t VL53L1::VL53L1_f_043(
+uint32_t VL53L1Base::VL53L1_f_043(
   uint32_t VL53L1_p_003,
   uint32_t VL53L1_p_018)
 {

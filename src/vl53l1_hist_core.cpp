@@ -17,7 +17,7 @@
 #include "vl53l1_class.h"
 
 
-void VL53L1::VL53L1_f_013(
+void VL53L1Base::VL53L1_f_013(
   uint8_t                         VL53L1_p_018,
   uint8_t                         filter_woi,
   VL53L1_histogram_bin_data_t    *pbins,
@@ -50,7 +50,7 @@ void VL53L1::VL53L1_f_013(
 }
 
 
-VL53L1_Error VL53L1::VL53L1_f_011(
+VL53L1_Error VL53L1Base::VL53L1_f_011(
   uint16_t           vcsel_width,
   uint16_t           fast_osc_frequency,
   uint32_t           total_periods_elapsed,
@@ -155,7 +155,7 @@ VL53L1_Error VL53L1::VL53L1_f_011(
 }
 
 
-void VL53L1::VL53L1_f_012(
+void VL53L1Base::VL53L1_f_012(
   uint16_t             gain_factor,
   int16_t              range_offset_mm,
   VL53L1_range_data_t *pdata)
@@ -199,7 +199,7 @@ void VL53L1::VL53L1_f_012(
 }
 
 
-void  VL53L1::VL53L1_f_037(
+void  VL53L1Base::VL53L1_f_037(
   VL53L1_histogram_bin_data_t   *pdata,
   int32_t                        ambient_estimate_counts_per_bin)
 {
@@ -213,7 +213,7 @@ void  VL53L1::VL53L1_f_037(
 }
 
 
-void  VL53L1::VL53L1_f_004(
+void  VL53L1Base::VL53L1_f_004(
   VL53L1_histogram_bin_data_t   *pxtalk,
   VL53L1_histogram_bin_data_t   *pbins,
   VL53L1_histogram_bin_data_t   *pxtalk_realigned)
@@ -292,7 +292,7 @@ void  VL53L1::VL53L1_f_004(
 }
 
 
-int8_t  VL53L1::VL53L1_f_038(
+int8_t  VL53L1Base::VL53L1_f_038(
   VL53L1_histogram_bin_data_t   *pdata1,
   VL53L1_histogram_bin_data_t   *pdata2)
 {
@@ -328,7 +328,7 @@ int8_t  VL53L1::VL53L1_f_038(
 }
 
 
-VL53L1_Error  VL53L1::VL53L1_f_039(
+VL53L1_Error  VL53L1Base::VL53L1_f_039(
   VL53L1_histogram_bin_data_t   *pidata,
   VL53L1_histogram_bin_data_t   *podata)
 {
