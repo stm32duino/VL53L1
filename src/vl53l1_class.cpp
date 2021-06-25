@@ -3893,8 +3893,8 @@ VL53L1_Error VL53L1::VL53L1_GetTickCount(uint32_t *ptick_count_ms)
 
 VL53L1_Error VL53L1::VL53L1_WaitUs(VL53L1_Dev_t *pdev, int32_t wait_us)
 {
-  (void)pdev;
-  delay(wait_us / 1000);
+  VL53L1_WaitMs(pdev, wait_us / 1000);
+  delayMicroseconds(wait_us % 1000);
   return VL53L1_ERROR_NONE;
 }
 
@@ -3973,5 +3973,4 @@ VL53L1_Error VL53L1::VL53L1_WaitValueMaskEx(VL53L1_Dev_t *pdev, uint32_t timeout
 
   return status;
 }
-
 
