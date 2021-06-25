@@ -3893,16 +3893,8 @@ VL53L1_Error VL53L1::VL53L1_GetTickCount(uint32_t *ptick_count_ms)
 
 VL53L1_Error VL53L1::VL53L1_WaitUs(VL53L1_Dev_t *pdev, int32_t wait_us)
 {
-  /* Currently, the largest value that will produce an accurate delay is 16383.
-   * This could change in future Arduino releases.
-   * https://www.arduino.cc/reference/en/language/functions/time/delaymicroseconds/
-   */
-  if (wait_us > 16383) {
-    VL53L1_WaitMs(pdev, wait_us / 1000);
-    delayMicroseconds(wait_us % 1000);
-  } else {
-    delayMicroseconds(wait_us);
-  }
+  VL53L1_WaitMs(pdev, wait_us / 1000);
+  delayMicroseconds(wait_us % 1000);
   return VL53L1_ERROR_NONE;
 }
 
@@ -3981,5 +3973,4 @@ VL53L1_Error VL53L1::VL53L1_WaitValueMaskEx(VL53L1_Dev_t *pdev, uint32_t timeout
 
   return status;
 }
-
 
