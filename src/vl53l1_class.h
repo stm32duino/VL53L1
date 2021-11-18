@@ -5299,7 +5299,6 @@ class VL53L1 : public RangeSensor {
 
     VL53L1_Error VL53L1_I2CWrite(uint8_t DeviceAddr, uint16_t RegisterAddr, uint8_t *pBuffer, uint16_t NumByteToWrite);
     VL53L1_Error VL53L1_I2CRead(uint8_t DeviceAddr, uint16_t RegisterAddr, uint8_t *pBuffer, uint16_t NumByteToRead);
-    VL53L1_Error VL53L1_GetTickCount(uint32_t *ptick_count_ms);
     VL53L1_Error VL53L1_WaitUs(VL53L1_Dev_t *pdev, int32_t wait_us);
     VL53L1_Error VL53L1_WaitMs(VL53L1_Dev_t *pdev, int32_t wait_ms);
 

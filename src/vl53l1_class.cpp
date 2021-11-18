@@ -3879,18 +3879,6 @@ VL53L1_Error VL53L1::VL53L1_I2CRead(uint8_t DeviceAddr, uint16_t RegisterAddr, u
   return 0;
 }
 
-VL53L1_Error VL53L1::VL53L1_GetTickCount(uint32_t *ptick_count_ms)
-{
-  /* Returns current tick count in [ms] */
-
-  VL53L1_Error status  = VL53L1_ERROR_NONE;
-
-  //*ptick_count_ms = timeGetTime();
-  *ptick_count_ms = 0;
-
-  return status;
-}
-
 VL53L1_Error VL53L1::VL53L1_WaitUs(VL53L1_Dev_t *pdev, int32_t wait_us)
 {
   VL53L1_WaitMs(pdev, wait_us / 1000);
@@ -3919,17 +3907,10 @@ VL53L1_Error VL53L1::VL53L1_WaitValueMaskEx(VL53L1_Dev_t *pdev, uint32_t timeout
    */
 
   VL53L1_Error status         = VL53L1_ERROR_NONE;
-  uint32_t     start_time_ms = 0;
-  uint32_t     current_time_ms = 0;
+  const auto   start_time_ms   = millis();
   uint32_t     polling_time_ms = 0;
   uint8_t      byte_value      = 0;
   uint8_t      found           = 0;
-
-
-
-  /* calculate time limit in absolute time */
-
-  VL53L1_GetTickCount(&start_time_ms);
 
   /* remember current trace functions and temporarily disable
    * function logging
@@ -3961,8 +3942,7 @@ VL53L1_Error VL53L1::VL53L1_WaitValueMaskEx(VL53L1_Dev_t *pdev, uint32_t timeout
 
     /* Update polling time (Compare difference rather than absolute to
        negate 32bit wrap around issue) */
-    VL53L1_GetTickCount(&current_time_ms);
-    polling_time_ms = current_time_ms - start_time_ms;
+    polling_time_ms = static_cast<std::uint32_t>(millis() - start_time_ms);
 
   }
 
