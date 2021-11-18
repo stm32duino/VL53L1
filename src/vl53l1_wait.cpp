@@ -425,7 +425,7 @@ VL53L1_Error VL53L1::VL53L1_poll_for_firmware_ready(
   VL53L1_Error status          = VL53L1_ERROR_NONE;
   VL53L1_LLDriverData_t *pdev = VL53L1DevStructGetLLDriverHandle(Dev);
 
-  const auto   start_time_ms   = millis();
+  uint32_t     start_time_ms   = millis();
   int32_t      poll_delay_ms   = VL53L1_POLLING_DELAY_MS;
   uint8_t      fw_ready        = 0;
 
@@ -451,7 +451,7 @@ VL53L1_Error VL53L1::VL53L1_poll_for_firmware_ready(
 
 
     pdev->fw_ready_poll_duration_ms =
-      static_cast<std::uint32_t>(millis() - start_time_ms);
+      (uint32_t)(millis() - start_time_ms);
   }
 
   if (fw_ready == 0 && status == VL53L1_ERROR_NONE) {

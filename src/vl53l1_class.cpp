@@ -3830,7 +3830,7 @@ VL53L1_Error VL53L1::VL53L1_I2CWrite(uint8_t DeviceAddr, uint16_t RegisterAddr, 
   Serial.print("Writing port number ");
   Serial.println(RegisterAddr);
 #endif
-  const uint8_t buffer[2] {RegisterAddr >> 8, RegisterAddr & 0xFF };
+  const uint8_t buffer[2] {(uint8_t)(RegisterAddr >> 8), (uint8_t)(RegisterAddr & 0xFF)};
   dev_i2c->write(buffer, 2);
   for (int i = 0 ; i < NumByteToWrite ; i++) {
     dev_i2c->write(pBuffer[i]);
@@ -3854,7 +3854,7 @@ VL53L1_Error VL53L1::VL53L1_I2CRead(uint8_t DeviceAddr, uint16_t RegisterAddr, u
     Serial.print("Reading port number ");
     Serial.println(RegisterAddr);
 #endif
-    const uint8_t buffer[2] {RegisterAddr >> 8, RegisterAddr & 0xFF };
+    const uint8_t buffer[2] {(uint8_t)(RegisterAddr >> 8), (uint8_t)(RegisterAddr & 0xFF)};
     dev_i2c->write(buffer, 2);
     status = dev_i2c->endTransmission(false);
     //Fix for some STM32 boards
@@ -3907,7 +3907,7 @@ VL53L1_Error VL53L1::VL53L1_WaitValueMaskEx(VL53L1_Dev_t *pdev, uint32_t timeout
    */
 
   VL53L1_Error status         = VL53L1_ERROR_NONE;
-  const auto   start_time_ms   = millis();
+  uint32_t     start_time_ms   = millis();
   uint32_t     polling_time_ms = 0;
   uint8_t      byte_value      = 0;
   uint8_t      found           = 0;
@@ -3942,7 +3942,7 @@ VL53L1_Error VL53L1::VL53L1_WaitValueMaskEx(VL53L1_Dev_t *pdev, uint32_t timeout
 
     /* Update polling time (Compare difference rather than absolute to
        negate 32bit wrap around issue) */
-    polling_time_ms = static_cast<std::uint32_t>(millis() - start_time_ms);
+    polling_time_ms = (uint32_t)(millis() - start_time_ms);
 
   }
 
