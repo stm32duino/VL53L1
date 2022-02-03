@@ -51,11 +51,11 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #ifndef _VL53L1_PLATFORM_USER_CONFIG_H_
 #define _VL53L1_PLATFORM_USER_CONFIG_H_
 
-#if __cplusplus >= 201703L /* for C++17 or newer */
+#if defined(__has_include)
   #if __has_include("platform_config_custom.h")
     #include "platform_config_custom.h"
   #endif
-#endif /* end C++17 block */
+#endif /* __has_include */
 
 #ifndef VL53L1_BYTES_PER_WORD
   #define    VL53L1_BYTES_PER_WORD              2
