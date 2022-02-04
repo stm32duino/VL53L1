@@ -34,17 +34,18 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  * The default configuration values may be customized without modifying the library code by either:
  *
  * - Predefining the macro using a preprocessor option.
- *   Using Arduino IDE this can be achieved with help of the
- *   [`platform.local.txt`](https://arduino.github.io/arduino-cli/0.20/platform-specification/#platformlocaltxt)
- *   configuration file.
- *   For example to change the value of `VL53L1_MAX_RANGE_RESULTS` to `1` add this line to
- *   `platform.local.txt`:
- *   ```
- *   compiler.cpp.extra_flags=-DVL53L1_MAX_RANGE_RESULTS=1
- *   ```
+ *   - Using Arduino IDE this can be achieved with help of the
+ *     [`platform.local.txt`](https://arduino.github.io/arduino-cli/0.20/platform-specification/#platformlocaltxt)
+ *     configuration file.
+ *     For example to change the value of `VL53L1_MAX_RANGE_RESULTS` to `1` add this line to
+ *     `platform.local.txt`:
+ *
+ *         compiler.cpp.extra_flags=-DVL53L1_MAX_RANGE_RESULTS=1
+ *
  * - Providing alternative macro definitions within a file named `platform_config_custom.h` which
  *   must be locatable by the preprocessor.
- *   For this to work the compiler must support C++17 or newer.
+ *   For this to work the compiler must support conditional inclusion (`__has_include`) which is
+ *   part of C++17 or newer.
  */
 
 
